@@ -1,0 +1,63 @@
+.container{
+    display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "leftSection mainSection mainSection mainSection rightSection";
+            
+        gap: 0 1rem;
+        width: 90%;
+        margin: 0 auto;
+        height: 200vh;
+}
+
+.leftSection {
+    grid-area: leftSection;
+}
+.mainSection {
+    grid-area: mainSection;
+}
+.rightSection {
+    grid-area: rightSection;
+}
+
+
+
+
+.search {
+    border: none;
+}
+.search:focus {
+    outline: none;
+}
+
+
+
+.searchContainer {
+    display: flex;
+    align-items: center; /* Centers items vertically */
+    padding: 10px;
+    width: 100%; /* Ensure the container takes full width */
+}
+
+.centerWrapper {
+    flex-grow: 1; /* Allows this container to take all available space */
+    display: flex;
+    justify-content: center; /* Center the searchBar horizontally */
+}
+
+.searchBar {
+    display: flex;
+    border: 1px solid lightblue;
+    height: 2.5rem;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 5px;
+    width: 30%; /* Maintains width at 30% */
+}
+
+.addPost {
+    /* This div is naturally aligned to the right due to the flex settings */
+    margin-left: auto; /* Pushes AddPost to the right */
+}
+

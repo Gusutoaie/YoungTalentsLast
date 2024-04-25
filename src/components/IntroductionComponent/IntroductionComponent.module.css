@@ -1,0 +1,127 @@
+.container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #252e38;
+    border-bottom: none;
+    justify-content: space-between;
+    overflow: hidden; /* Prevents content from spilling out */
+    padding: 5px;
+}
+.container:last-child {
+    border-bottom: 1px solid #252e38;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the space between the logo and the text */
+}
+
+.postLogo {
+    background-image: url('path-to-your-logo.png'); /* Add your logo path here */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1.5rem; /* Adjust to match your logo size */
+    height: 1.5rem; /* Adjust to match your logo size */
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.postTitle {
+    display: flex;
+    align-items: center;
+}
+
+.postTitleText {
+    font-size: 0.875rem; /* Adjust for responsive text size */
+    color: #252e38;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.startedBy {
+    display: flex;
+    align-items: center;
+    margin-top: 4px; /* Adjust as needed */
+}
+
+.startedByText {
+    font-size: 0.75rem; /* Adjust for responsive text size */
+    color: #252e38;
+    white-space: nowrap;
+}
+
+.replies {
+    display: flex;
+    align-items: center;
+}
+
+.repliesCount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.repliesCountNumber {
+    font-size: 0.875rem; /* Adjust for responsive text size */
+    color: #252e38;
+    font-weight: bold;
+}
+
+.repliesCountText {
+    font-size: 0.75rem; /* Adjust for responsive text size */
+    color: #252e38;
+}
+
+.person {
+    display: flex;
+    align-items: center;
+}
+
+.personName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.personNameText {
+    font-size: 0.875rem; /* Adjust for responsive text size */
+    color: #252e38;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.personDate {
+    font-size: 0.75rem; /* Adjust for responsive text size */
+    color: #252e38;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem;
+    }
+
+    .title, .replies, .person {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .postHeader, .startedBy, .personName {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .repliesCount, .personName {
+        margin-top: 0.5rem;
+    }
+}

@@ -1,0 +1,14 @@
+.Articles {
+    display:flex;
+    justify-content: space-between;
+
+}
+.newestEvents{
+    text-align: center;
+    border-bottom: 2px solid lightblue;
+    border-top-left-radius: 2em 5em;
+    border-top-right-radius: 2em 5em;
+    border-bottom-right-radius: 7em 5em;
+    border-bottom-left-radius: 7em 5em;
+
+}
