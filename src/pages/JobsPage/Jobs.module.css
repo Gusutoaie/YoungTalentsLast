@@ -1,0 +1,47 @@
+.container{
+    height: 100%;
+}
+.jobsContainer{
+    background-color: white;
+    height: 1200px;
+}
+.jobs {
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 100%;
+    margin: auto;
+}
+.job {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.jobDescription{
+    padding-left: 10px;
+}
+.jobImg{
+    display: flex;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+.jobDescriptionTitle a {
+    font-size: x-large;
+}
+
+.card {
+    background-color: var(--mantine-color-body);
+  }
+  
+  .title {
+    font-weight: bold;
+    font-family:
+      Greycliff CF,
+      var(--mantine-font-family);
+    line-height: 1.2;
+  }
+  
+  .body {
+    padding: var(--mantine-spacing-md);
+  }

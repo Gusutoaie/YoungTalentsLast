@@ -1,0 +1,79 @@
+.formContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.label {
+    margin-bottom: 5px;
+    color: #333;
+    display: block;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #0073b1;
+    outline: none;
+}
+
+.quill {
+    margin-bottom: 20px;
+    height: 150px;
+}
+
+.quillLarge .ql-container {
+    height: 300px; /* Adjust this as needed */
+}
+
+.button {
+    padding: 10px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #005f8a;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 15px;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+
+    .input, .quill {
+        padding: 8px;
+    }
+
+    .button {
+        padding: 8px;
+    }
+}

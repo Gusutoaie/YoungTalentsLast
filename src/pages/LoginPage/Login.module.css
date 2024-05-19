@@ -1,0 +1,39 @@
+.title {
+    font-family:
+      Greycliff CF,
+      var(--mantine-font-family);
+    font-weight: 900;
+  }
+
+  .container{
+    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+
+  }
+  .loginForm{
+    min-height: 700px;
+    width: 500px;
+  }
+  .inregistrare {
+    background-color: lightgray;
+    color: black;
+    width: 45%;
+  }
+  .inregistrare:hover {
+    background-color: lightgray;
+    color: white;
+  }
+  .intraInCont {
+    width: 45%;
+    background-color: #3ba1da;
+  }
+
+  .title {
+   height: 250px;
+   color: white;
+   font-size: xx-large;
+   display: flex;
+    justify-content: left;
+    }

@@ -1,0 +1,138 @@
+.container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.splitter {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  box-sizing: border-box;
+
+}
+
+.formContainer {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  box-sizing: border-box;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.company svg {
+  margin-right: 10px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.location svg {
+  margin-right: 10px;
+}
+
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+.ql-container {
+  border: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ql-editor {
+  padding: 0;
+}
+
+.quill .ql-tooltip .ql-hidden {
+  height: 0px;
+}
+
+
+.rightSide {
+  width: 35%;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.rightSide h2 {
+  margin-bottom: 20px;
+}
+
+.applyForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.formGroup:last-child {
+  margin-top: 500px;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+.quillEditor {
+  height: 150px;
+  margin-bottom: 30px;
+}

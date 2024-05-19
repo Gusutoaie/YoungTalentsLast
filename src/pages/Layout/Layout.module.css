@@ -1,15 +1,19 @@
 .page {
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
+    background-image: url("E:/YoungTalents FE - Copy/YoungTalents/src/assets/images/uvt-background.png");
+    background-size: cover;
+    background-position: center;
 }
 
-.navbar {
-    height: 8%;
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 90%;
     width: 100%;
 }
 
 .outlet {
-    height: 95%;
     width: 100%;
 }
 .footer{
@@ -20,4 +24,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.navbar{
+    height: 5%;
+    width: 100%;
+
 }
