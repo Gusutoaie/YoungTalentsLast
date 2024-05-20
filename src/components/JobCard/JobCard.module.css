@@ -1,15 +1,45 @@
 .card {
-    background-color: var(--mantine-color-body);
-  }
-  
-  .title {
-    font-weight: bold;
-    font-family:
-      Greycliff CF,
-      var(--mantine-font-family);
-    line-height: 1.2;
-  }
-  
-  .body {
-    padding: var(--mantine-spacing-md);
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--mantine-color-body);
+  margin-bottom: 5px;
+}
+
+.title {
+  font-weight: bold;
+  font-family: 'Greycliff CF', var(--mantine-font-family);
+  line-height: 1.2;
+}
+
+.body {
+  padding: var(--mantine-spacing-md);
+  flex-grow: 1;
+}
+
+.placeholderImage {
+  width: 80px;
+  height: 80px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.titleLink {
+  color: #1c7ed6;
+  text-decoration: none;
+}
+
+.titleLink:hover {
+  text-decoration: underline;
+}
+
+.groupClass{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

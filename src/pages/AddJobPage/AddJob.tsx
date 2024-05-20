@@ -18,13 +18,16 @@ const JobForm: React.FC = () => {
     user: undefined,
   });
 
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+
   const handleChange = (name: string, value: any) => {
     setJobDetails({ ...jobDetails, [name]: value });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setJobDetails({ ...jobDetails, logoUrl: e.target.files[0] });
+      const file = e.target.files[0];
+      setLogoFile(file);
     }
   };
 
@@ -41,8 +44,8 @@ const JobForm: React.FC = () => {
       mandatorySkills: jobDetails.mandatorySkills,
       niceToHaveSkills: jobDetails.niceToHaveSkills,
     }));
-    if (jobDetails.logoUrl) {
-      formData.append('logo', jobDetails.logoUrl);
+    if (logoFile) {
+      formData.append('logo', logoFile);
     }
 
     try {
@@ -58,6 +61,7 @@ const JobForm: React.FC = () => {
   };
 
   return (
+    <div className={classes.container}>
     <div className={classes.formContainer}>
       <form onSubmit={handleSubmit} className={classes.form}>
         <div className={classes.formGroup}>
@@ -153,6 +157,7 @@ const JobForm: React.FC = () => {
 
         <button type="submit" className={classes.button}>Submit</button>
       </form>
+    </div>
     </div>
   );
 };

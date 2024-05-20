@@ -8,7 +8,7 @@ interface Job {
     responsibilities: string;
     mandatorySkills: string;
     niceToHaveSkills: string;
-    logoUrl: File | null;
+    logoUrl: string | null; // Ensure this is a string
     date: string;
     user?: User; // Make user optional
 

@@ -1,5 +1,7 @@
-import { Card, Image, Avatar, Text, Group } from '@mantine/core';
+import React from 'react';
+import { Card, Image, Text, Group, Badge, Button } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import { IconHeart, IconArrowRight } from '@tabler/icons-react';
 import classes from './JobCard.module.css';
 
 interface JobCardProps {
@@ -21,40 +23,33 @@ const JobCard: React.FC<JobCardProps> = ({
   location,
   link,
 }) => {
+  const imageUrl = image ? `http://localhost:8090/${image}` : null;
+
   return (
-    <Card withBorder radius="md" p={0} className={classes.card}>
-      <Group wrap="nowrap" gap={0}>
-        {image ? (
-          <Image src={image} height={160} width={160} />
+    <Card withBorder radius="md" p="md" className={classes.card}>
+      <Group >
+        {imageUrl ? (
+          <Image src={imageUrl} height={80} width={80} radius="md" />
         ) : (
           <div className={classes.placeholderImage}></div>
         )}
         <div className={classes.body}>
-          <Text tt="uppercase" c="dimmed" fw={700} size="xs">
-            {company}
+          <Group  className={classes.groupClass}>
+            <Text size="lg">
+              <Link to={link} className={classes.titleLink}>
+                {title}
+              </Link>
+            </Text>
+            <Button className={classes.detaliiButton} variant="light">
+              Detalii
+            </Button>
+          </Group>
+          <Text size="sm" color="dimmed">
+            {location} | {new Date(date).toLocaleDateString()}
           </Text>
-          <Text className={classes.title} mt="xs" mb="md">
-            <Link to={link} className={classes.titleLink}>
-              {title}
-            </Link>
-          </Text>
-          <Group wrap="nowrap" gap="xs">
-            <Group gap="xs" wrap="nowrap">
-              <Avatar size={20} src={image || undefined} />
-              <Text size="xs">{author}</Text>
-            </Group>
-            <Text size="xs" c="dimmed">
-              •
-            </Text>
-            <Text size="xs" c="dimmed">
-              {date}
-            </Text>
-            <Text size="xs" c="dimmed">
-              •
-            </Text>
-            <Text size="xs" c="dimmed">
-              {location}
-            </Text>
+          <Group mt="md">
+            <Badge>{company}</Badge>
+            <Text size="sm">Sursa: {author}</Text>
           </Group>
         </div>
       </Group>
