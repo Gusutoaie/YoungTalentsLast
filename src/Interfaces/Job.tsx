@@ -11,6 +11,11 @@ interface Job {
     logoUrl: string | null; // Ensure this is a string
     date: string;
     user?: User; // Make user optional
+    vechimeAnunt: string;
+    tipOferta: string;
+    experienta: string;
+    remote: string;
+
 
   }
   export default Job;

@@ -38,7 +38,7 @@ const HomePage = () => {
                     </div>
                     <div className={classes.panelHead}>
                         <h3 className={classes.panelTitle}>CARIERE</h3>
-                        <a className={classes.panelLinks} href="/about">VEZI MAI MULTE INFORMAȚII</a>
+                        <a className={classes.panelLinks} href="/jobs">VEZI MAI MULTE INFORMAȚII</a>
                     </div>
 
                 </div>
@@ -58,7 +58,7 @@ const HomePage = () => {
                     </div>
                     <div className={classes.panelHead}>
                         <h3 className={classes.panelTitle}>NOUTĂȚI</h3>
-                        <a className={classes.panelLinks} href="/about">VEZI MAI MULTE INFORMAȚII</a>
+                        <a className={classes.panelLinks} href="/noutati-evenimente">VEZI MAI MULTE INFORMAȚII</a>
                     </div>
 
                 </div>

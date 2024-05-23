@@ -9,6 +9,8 @@ import Noutati from './pages/NoutatiEvenimentePage/Noutati';
 import JobsPage from './pages/JobsPage/Jobs';
 import Job from './pages/JobsPage/Job';
 import JobForm from './pages/AddJobPage/AddJob';
+import About from './pages/AboutPage/About';
+import Members from './pages/MembersPage/Members';
 function App() {
 
   return (
@@ -22,6 +24,9 @@ function App() {
           <Route path="jobs" element={<JobsPage />} />
           <Route path="jobs/:id" element={<Job />} />
           <Route path="add-job" element={<JobForm />} />
+          <Route path="despre-noi" element={<About />} />
+          <Route path="members" element={<Members />} />
+
         </Route>
 
       </Routes>

@@ -10,7 +10,7 @@ const links = [
     link: '/', 
     label: 'Acasă',
     links: [
-      { link: '#', label: 'Despre noi' },
+      { link: '/despre-noi', label: 'Despre noi' },
     ],
   },
   { 
