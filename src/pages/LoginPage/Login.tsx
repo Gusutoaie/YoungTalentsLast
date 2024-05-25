@@ -13,8 +13,13 @@ import {
 } from '@mantine/core';
 import { loginUser } from '../../utils/loginUser'; // Import the login utility function
 import classes from './Login.module.css';
+import { setUser } from '../../slices/userSlice';
+import { useAppDispatch } from '../../hookt';
+import { useAppSelector } from '../../hookt';
 
 export default function Login() {
+  const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,8 +30,11 @@ export default function Login() {
       const userData = { emailAddress: email, password };
       const response = await loginUser(userData);
       alert('Login successful');
-      console.log(response);
-      navigate('/dashboard'); // Redirect to the dashboard or desired route after successful login
+      console.log('Response:', response); // Log the response to verify its structure
+
+      dispatch(setUser(response)); // Assuming response contains the user data
+
+      navigate('/my-account'); // Redirect to the account page after successful login
     } catch (error) {
       console.error('Error logging in:', error);
       alert('Failed to log in');
@@ -38,13 +46,13 @@ export default function Login() {
       <div className={classes.title}>
         <h3>Login</h3>
       </div>
-      
+
       <div className={classes.container}>
         <Container className={classes.loginForm}>
           <Title ta="center" className={classes.title}>
             Welcome back!
           </Title>
-        
+
           <Paper withBorder shadow="md" p={30} mt={30} radius="md">
             <TextInput
               label="Email"

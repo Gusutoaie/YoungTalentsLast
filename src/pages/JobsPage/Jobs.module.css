@@ -77,22 +77,31 @@
   margin-left: 20px;
 }
 
+.topHeader{
+  height: 5rem;
+  margin-bottom: 5px;
+}
+
 .header {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  justify-content: center ;
+  align-items: center;
+  background-color: aliceblue;
+  height: 5rem;
 }
+
 
 .search {
   width: 30%;
 }
 
 .filterBody {
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
-  width: 70%;
+  box-shadow: 1px 1px 5px 1px rgba(0.2, 0.2, 0.2, 0.2);
+  width: 80%;
   padding: 20px;
   border-radius: 10px;
   margin: 5px;
+  background-color: aliceblue;
 }
 
 /* Mobile Styles */

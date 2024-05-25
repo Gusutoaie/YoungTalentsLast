@@ -11,6 +11,7 @@ import Job from './pages/JobsPage/Job';
 import JobForm from './pages/AddJobPage/AddJob';
 import About from './pages/AboutPage/About';
 import Members from './pages/MembersPage/Members';
+import MyAccount from './pages/AccountPage/MyAccount';
 function App() {
 
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path="add-job" element={<JobForm />} />
           <Route path="despre-noi" element={<About />} />
           <Route path="members" element={<Members />} />
-
+          <Route path="my-account" element={<MyAccount />} />
         </Route>
 
       </Routes>

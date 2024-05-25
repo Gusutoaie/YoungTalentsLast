@@ -4,6 +4,9 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './Navbar.module.css';
 import Logoooo from '../../assets/images/logoooo.png';
+import { clearUser } from '../../slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../hookt';
 
 const links = [
   { 
@@ -37,6 +40,8 @@ const links = [
 ];
 
 export default function Navbar() {
+  const user = useAppSelector((state:any) => state.user);
+  const dispatch = useDispatch();
   const [opened, { toggle }] = useDisclosure(false);
 
   const items = links.map((link) => {
@@ -73,6 +78,19 @@ export default function Navbar() {
       </a>
     );
   });
+
+  // Conditionally add "Contul meu" link if user exists
+  if (user) {
+    items.push(
+      <a
+        key="contul-meu"
+        href="/my-account"
+        className={classes.link}
+      >
+        Contul meu
+      </a>
+    );
+  }
 
   return (
     <header className={classes.header}>
