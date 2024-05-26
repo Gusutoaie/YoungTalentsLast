@@ -1,90 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Members.module.css';
 import { Avatar, Badge, Table, Group, Text, Select } from '@mantine/core';
-
-const data = [
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png',
-    name: 'Robert Wolfkisser',
-    job: 'Engineer',
-    email: 'rob_wolf@gmail.com',
-    role: 'Collaborator',
-    lastActive: '2 days ago',
-    active: true,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png',
-    name: 'Jill Jailbreaker',
-    job: 'Engineer',
-    email: 'jj@breaker.com',
-    role: 'Collaborator',
-    lastActive: '6 days ago',
-    active: true,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-10.png',
-    name: 'Henry Silkeater',
-    job: 'Designer',
-    email: 'henry@silkeater.io',
-    role: 'Contractor',
-    lastActive: '2 days ago',
-    active: false,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png',
-    name: 'Bill Horsefighter',
-    job: 'Designer',
-    email: 'bhorsefighter@gmail.com',
-    role: 'Contractor',
-    lastActive: '5 days ago',
-    active: true,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png',
-    name: 'Jeremy Footviewer',
-    job: 'Manager',
-    email: 'jeremy@foot.dev',
-    role: 'Manager',
-    lastActive: '3 days ago',
-    active: false,
-  },
-];
-
+import axios from 'axios';
+import User from '../../Interfaces/User';
 const rolesData = ['Manager', 'Collaborator', 'Contractor'];
 
 export default function Members() {
-  const rows = data.map((item) => (
-    <Table.Tr key={item.name}>
-      <Table.Td>
+  const [members, setMembers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await axios.get<User[]>('http://localhost:8090/user/all'); // Replace with your API endpoint
+        setMembers(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error as Error);
+        setLoading(false);
+      }
+    };
+
+    fetchMembers();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const rows = members.map((item) => (
+    <tr key={item.id}>
+      <td>
         <Group gap="sm">
-          <Avatar size={40} src={item.avatar} radius={40} />
+          <Avatar size={40} src={item.profilePicturePath} radius={40} />
           <div>
             <Text fz="sm" fw={500}>
-              {item.name}
+              {item.firstName} {item.lastName}
             </Text>
             <Text fz="xs" c="dimmed">
               {item.email}
             </Text>
           </div>
         </Group>
-      </Table.Td>
+      </td>
 
-      <Table.Td>
+      <td>
         <Select
           data={rolesData}
-          defaultValue={item.role}
+          defaultValue={item.birthDate}
           variant="unstyled"
           allowDeselect={false}
         />
-      </Table.Td>
-      <Table.Td>{item.lastActive}</Table.Td>
-      <Table.Td>
-        {item.active ? (
+      </td>
+      <td>{/* Assuming lastActive field is removed */}</td>
+      <td>
+        {item.isConfirmed ? (
           <Badge fullWidth variant="light">
             Active
           </Badge>
@@ -93,25 +68,24 @@ export default function Members() {
             Disabled
           </Badge>
         )}
-      </Table.Td>
-    </Table.Tr>
+      </td>
+    </tr>
   ));
 
   return (
     <div className={classes.container}>
-    <Table.ScrollContainer minWidth={800}>
-      <Table verticalSpacing="sm">
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th>Membru</Table.Th>
-            <Table.Th>Job Actual</Table.Th>
-            <Table.Th>Last active</Table.Th>
-            <Table.Th>Status</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </Table>
-    </Table.ScrollContainer>
+      <Table.ScrollContainer minWidth={800}>
+        <Table verticalSpacing="sm">
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Job Actual</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </Table>
+      </Table.ScrollContainer>
     </div>
   );
 }

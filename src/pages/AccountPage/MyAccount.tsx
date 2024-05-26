@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../../hookt';
+import { useAppSelector, useAppDispatch } from '../../hookt'; // Import the useAppSelector and useAppDispatch hooks
 import { IconSettings } from '@tabler/icons-react';
 import classes from './MyAccount.module.css';
+import axios from 'axios';
 import { updateUser } from '../../slices/userSlice'; // Import the updateUser action
 
 const MyAccount: React.FC = () => {
@@ -17,7 +18,8 @@ const MyAccount: React.FC = () => {
         lastName: user.lastName,
         birthDate: user.birthDate,
         phoneNumber: user.phoneNumber,
-        faculty: '',
+        faculty: user.faculty?.name || '', // Adjust based on your logic
+
         yearOfStudy: user.yearOfStudy,
         password: '',
     });
@@ -40,19 +42,44 @@ const MyAccount: React.FC = () => {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const updatedUser = {
-            ...user,
-            ...formData,
-            faculty: {
-                id: 1,
-                name: 'Faculty of ',
-            },
+            id: user.id,
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            birthDate: formData.birthDate,
+            phoneNumber: formData.phoneNumber,
             profilePicturePath: avatar,
+            token: user.token,
+            isConfirmed: user.isConfirmed,
+            createdAt: user.createdAt,
+            yearOfStudy: formData.yearOfStudy,
+            facultyDto: {
+                id: user.faculty?.id || 1, // Ensure the ID is correctly set
+                name: formData.faculty,
+            },
         };
-        dispatch(updateUser(updatedUser)); // Dispatch updateUser action with form data
-        setIsEditing(false);
+    
+        try {
+            const response = await axios.put('http://localhost:8090/user/update', updatedUser, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.status === 200) {
+                dispatch(updateUser(updatedUser)); // Dispatch updateUser action with form data
+                setIsEditing(false);
+            } else {
+                // Handle error
+                console.error('Failed to update user');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
@@ -83,7 +110,7 @@ const MyAccount: React.FC = () => {
                                     <a href="/logout" className={classes.link}>Logout</a>
                                 </div>
                             )}
-                        </div>  
+                        </div>
                     </div>
                 </div>
 
@@ -150,7 +177,7 @@ const MyAccount: React.FC = () => {
                             <input
                                 className={classes.userPropertyValue}
                                 name="faculty"
-                                value={"Faculty of "}
+                                value={formData.faculty}
                                 onChange={handleChange}
                                 readOnly={!isEditing}
                             />

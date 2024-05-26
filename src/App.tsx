@@ -12,6 +12,7 @@ import JobForm from './pages/AddJobPage/AddJob';
 import About from './pages/AboutPage/About';
 import Members from './pages/MembersPage/Members';
 import MyAccount from './pages/AccountPage/MyAccount';
+import Facultati from './pages/FacultatiPage/Facultati';
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="despre-noi" element={<About />} />
           <Route path="members" element={<Members />} />
           <Route path="my-account" element={<MyAccount />} />
+          <Route path="facultati" element={<Facultati />} />
         </Route>
 
       </Routes>

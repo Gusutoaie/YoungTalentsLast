@@ -21,7 +21,7 @@ const links = [
     label: 'Noutăți & Evenimente', 
   },
   { 
-    link: '#3', 
+    link: '/facultati', 
     label: 'Facultăți' 
   },
   {
