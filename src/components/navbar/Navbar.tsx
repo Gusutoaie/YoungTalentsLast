@@ -34,7 +34,7 @@ const links = [
     ],
   },
   { 
-    link: '/pricing', 
+    link: '/parteneriate', 
     label: 'Parteneriate' 
   },
 ];

@@ -1,0 +1,53 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.newPost, .newReply {
+    margin-bottom: 20px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.posts {
+    margin-top: 20px;
+}
+
+.post {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.replies {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.reply {
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-top: 10px;
+}

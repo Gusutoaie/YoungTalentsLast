@@ -13,6 +13,8 @@ import About from './pages/AboutPage/About';
 import Members from './pages/MembersPage/Members';
 import MyAccount from './pages/AccountPage/MyAccount';
 import Facultati from './pages/FacultatiPage/Facultati';
+import Parteneriate from './pages/ParteneriatePage/Parteneriate';
+import ForumPage from './pages/ForumPage/Forum';
 function App() {
 
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="members" element={<Members />} />
           <Route path="my-account" element={<MyAccount />} />
           <Route path="facultati" element={<Facultati />} />
+          <Route path="parteneriate" element={<Parteneriate />} />
+          <Route path="forum" element={<ForumPage />} />
         </Route>
 
       </Routes>

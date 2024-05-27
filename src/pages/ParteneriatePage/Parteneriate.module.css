@@ -1,0 +1,11 @@
+.container{
+    background-color: white;
+    margin-top: 10%;
+}
+
+.subContainer{
+    width: 70%;
+    margin: auto;
+    padding: 15px;
+    padding-bottom: 15rem;
+}

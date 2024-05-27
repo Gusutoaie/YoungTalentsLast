@@ -30,6 +30,7 @@
     align-items: center;
     margin-top: 5%;
     position: relative;
+    margin-bottom:5%;
 }
 
 .userAvatar {
@@ -61,26 +62,30 @@
 .contentHeader {
     display: flex;
     flex-direction: column;
-    background-color: aquamarine;
+    background-color: #444;
     height: 3rem;
 }
 
 .contentHeaderNav {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     height: 100%;
+  
 }
 
 .link {
+    display: flex;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: 0 1rem;
     font-weight: bold;
+    align-items: center;
 }
 
 .userProperties {
-    margin-top: 5%;
+    width: 60%;
+    margin: auto;
+    margin-top:2%;
 }
 
 .userProperty {
@@ -136,3 +141,7 @@
 .dropdownMenu a:hover {
     background-color: #f0f0f0;
 }
+.link .icon {
+    font-size: 20px;
+}
+

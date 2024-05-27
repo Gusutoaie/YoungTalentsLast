@@ -4,6 +4,7 @@ import { IconSettings } from '@tabler/icons-react';
 import classes from './MyAccount.module.css';
 import axios from 'axios';
 import { updateUser } from '../../slices/userSlice'; // Import the updateUser action
+import { IconUser, IconPencil,IconMessageCircle2Filled} from '@tabler/icons-react';
 
 const MyAccount: React.FC = () => {
     const user = useAppSelector((state) => state.user); // Fetch user data from Redux store
@@ -91,7 +92,7 @@ const MyAccount: React.FC = () => {
                     </span>
                     <div className={classes.UserHeader}>
                         <div className={classes.userAvatar}>
-                            <img src={avatar} alt="User avatar" />
+                            <img src={avatar} alt="" />
                             <input
                                 type="file"
                                 accept="image/*"
@@ -117,9 +118,18 @@ const MyAccount: React.FC = () => {
                 <div className={classes.content}>
                     <div className={classes.contentHeader}>
                         <nav className={classes.contentHeaderNav}>
-                            <a href="#" className={classes.link}>About</a>
-                            <a href="#" className={classes.link}>Posts</a>
-                            <a href="#" className={classes.link}>Comments</a>
+                        <a href="#" className={classes.link}>
+                                <IconUser className={classes.icon} />
+                                About
+                            </a>
+                            <a href="#" className={classes.link}>
+                                <IconPencil className={classes.icon} />
+                                Posts
+                            </a>
+                            <a href="#" className={classes.link}>
+                                <IconMessageCircle2Filled className={classes.icon} />
+                                Comments
+                            </a>
                         </nav>
                     </div>
 
