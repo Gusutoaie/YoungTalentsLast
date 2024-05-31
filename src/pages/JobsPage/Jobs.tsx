@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import JobCard from '../../components/JobCard/JobCard';
 import classes from './Jobs.module.css';
 import Job from '../../Interfaces/Job';
 import { TextInput, TextInputProps, ActionIcon, useMantineTheme, rem } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
+import SearchBarCard from '../../components/searchBar/searchBar';
 
 type FilterType = 'date' | 'type' | 'remote' | 'experience';
 
@@ -16,6 +17,12 @@ const JobsPage: React.FC = (props: TextInputProps) => {
     remote: new Set<string>(),
     experience: new Set<string>(),
   });
+  const [citySuggestions, setCitySuggestions] = useState<string[]>([
+    'București', 'Cluj-Napoca', 'Timișoara', 'Iași', 'Constanța', 'Brașov', 'Sibiu', 'Oradea', 'Arad', 'Pitești'
+  ]);
+  const [cityFilter, setCityFilter] = useState('');
+  const [showCitySuggestions, setShowCitySuggestions] = useState(false);
+  const cityInputRef = useRef<HTMLDivElement>(null);
 
   const theme = useMantineTheme();
 
@@ -69,24 +76,39 @@ const JobsPage: React.FC = (props: TextInputProps) => {
     return matchDate && matchType && matchRemote && matchExperience;
   });
 
+  const handleCityInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCityFilter(e.target.value);
+    if (e.target.value) {
+      setShowCitySuggestions(true);
+    } else {
+      setShowCitySuggestions(false);
+    }
+  };
+
+  const handleCityClick = (city: string) => {
+    setCityFilter(city);
+    setShowCitySuggestions(false);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (cityInputRef.current && !cityInputRef.current.contains(event.target as Node)) {
+      setShowCitySuggestions(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className={classes.container}>
       <div className={classes.topHeader}>
         <div className={classes.header}>
           <div className={classes.search}>
-            <TextInput
-              radius="xl"
-              size="md"
-              placeholder="Cuvinte cheie"
-              rightSectionWidth={42}
-              leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
-              rightSection={
-                <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
-                  <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-                </ActionIcon>
-              }
-              {...props}
-            />
+            <SearchBarCard />
           </div>
         </div>
       </div>
@@ -94,20 +116,45 @@ const JobsPage: React.FC = (props: TextInputProps) => {
         <div className={classes.leftSide}>
           <div className={classes.filter}>
             <div className={classes.filterBody}>
+              <h3>Orașe</h3>
+              <div className={classes.cityInput} ref={cityInputRef}>
+                <input
+                  type="text"
+                  value={cityFilter}
+                  onChange={handleCityInputChange}
+                  placeholder="ex: București"
+                />
+                {showCitySuggestions && (
+                  <ul className={classes.suggestions}>
+                    {citySuggestions.filter(city =>
+                      city.toLowerCase().includes(cityFilter.toLowerCase())
+                    ).slice(0, 5).map((city, index) => (
+                      <li key={index} onClick={() => handleCityClick(city)}>
+                        {city}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+
+            <div className={classes.filterBody}>
               <h3>Vechime anunț</h3>
               <div className={classes.filterOptions}>
-                {['Ultimele 24h', 'Ultimele 3 zile', 'Ultimele 7 zile', 'Ultima lună'].map(option => (
-                  <div key={option}>
-                    <input
-                      type="checkbox"
-                      name="date"
-                      value={option}
-                      checked={filters.date.has(option)}
-                      onChange={(e) => handleFilterChange('date', e.target.value as FilterType)}
-                    />
-                    <label>{option}</label>
-                  </div>
-                ))}
+                <div className={classes.scrollableOptions}>
+                  {['Ultimele 24h', 'Ultimele 3 zile', 'Ultimele 7 zile', 'Ultima lună', 'Ultimele 6 luni', 'Ultimul an'].map(option => (
+                    <div key={option}>
+                      <input
+                        type="checkbox"
+                        name="date"
+                        value={option}
+                        checked={filters.date.has(option)}
+                        onChange={(e) => handleFilterChange('date', e.target.value as FilterType)}
+                      />
+                      <label>{option}</label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

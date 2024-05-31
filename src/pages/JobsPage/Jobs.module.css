@@ -77,19 +77,18 @@
   margin-left: 20px;
 }
 
-.topHeader{
+.topHeader {
   height: 5rem;
   margin-bottom: 5px;
 }
 
 .header {
   display: flex;
-  justify-content: center ;
+  justify-content: center;
   align-items: center;
   background-color: aliceblue;
   height: 5rem;
 }
-
 
 .search {
   width: 30%;
@@ -102,6 +101,64 @@
   border-radius: 10px;
   margin: 5px;
   background-color: aliceblue;
+}
+
+.cityInput {
+  position: relative;
+}
+
+.cityInput input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 150px; /* Adjust height as needed */
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f1f1f1;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollableOptions {
+  max-height: 150px; /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.error {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.jobsContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Mobile Styles */
