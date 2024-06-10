@@ -15,6 +15,8 @@ import MyAccount from './pages/AccountPage/MyAccount';
 import Facultati from './pages/FacultatiPage/Facultati';
 import Parteneriate from './pages/ParteneriatePage/Parteneriate';
 import ForumPage from './pages/ForumPage/Forum';
+import EventDetails from './pages/EventDetails/EventDetails';
+import AddArticle from './pages/AddArticle/AddArticle';
 function App() {
 
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="facultati" element={<Facultati />} />
           <Route path="parteneriate" element={<Parteneriate />} />
           <Route path="forum" element={<ForumPage />} />
+          <Route path="event/:id" element={<EventDetails />} />
+          <Route path="addArticle" element={<AddArticle />} />
         </Route>
 
       </Routes>

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hookt'; // Import the useAppSelector and useAppDispatch hooks
-import { IconSettings } from '@tabler/icons-react';
+import { IconSettings, IconUpload } from '@tabler/icons-react';
 import classes from './MyAccount.module.css';
 import axios from 'axios';
 import { updateUser } from '../../slices/userSlice'; // Import the updateUser action
-import { IconUser, IconPencil,IconMessageCircle2Filled} from '@tabler/icons-react';
+import { IconUser, IconPencil, IconMessageCircle2Filled } from '@tabler/icons-react';
+import UVTAlumni from '../../assets/images/UVTAlumni.png';
 
 const MyAccount: React.FC = () => {
     const user = useAppSelector((state) => state.user); // Fetch user data from Redux store
     const dispatch = useAppDispatch();
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [avatar, setAvatar] = useState(user.profilePicturePath);
+    const [headerImage, setHeaderImage] = useState(UVTAlumni);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
         username: user.username,
@@ -20,7 +22,6 @@ const MyAccount: React.FC = () => {
         birthDate: user.birthDate,
         phoneNumber: user.phoneNumber,
         faculty: user.faculty?.name || '', // Adjust based on your logic
-
         yearOfStudy: user.yearOfStudy,
         password: '',
     });
@@ -33,6 +34,13 @@ const MyAccount: React.FC = () => {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
             setAvatar(URL.createObjectURL(file));
+        }
+    };
+
+    const handleHeaderImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            setHeaderImage(URL.createObjectURL(file));
         }
     };
 
@@ -88,7 +96,16 @@ const MyAccount: React.FC = () => {
             <div className={classes.subContainer}>
                 <div className={classes.header}>
                     <span className={classes.headerPicture}>
-                        <a href="/" className={classes.link}>Home</a>
+                        <img src={headerImage} className={classes.headerPictureImg} alt="UVT Alumni" />
+                        <div className={classes.headerPictureUpload}>
+                            <IconUpload className={classes.uploadIcon} />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                className={classes.headerPictureInput}
+                                onChange={handleHeaderImageChange}
+                            />
+                        </div>
                     </span>
                     <div className={classes.UserHeader}>
                         <div className={classes.userAvatar}>
@@ -118,7 +135,7 @@ const MyAccount: React.FC = () => {
                 <div className={classes.content}>
                     <div className={classes.contentHeader}>
                         <nav className={classes.contentHeaderNav}>
-                        <a href="#" className={classes.link}>
+                            <a href="#" className={classes.link}>
                                 <IconUser className={classes.icon} />
                                 About
                             </a>

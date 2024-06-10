@@ -1,21 +1,131 @@
-.container{
+/* General Styles */
+.container {
     height: 100%;
 }
-.noutatiContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    height: 100%;
-}
-.title h2{
+
+.title h2 {
     margin-top: 20px;
     margin-bottom: 20px;
     color: white;
+    text-align: center;
 }
 
+.noutatiContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100%;
+}
 
-.video{
-    height: 1200px;
-    width: 1300px;
+.leftSide,
+.middleSide,
+.rightSide {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.articleCard {
+    margin: 10px 0;
+}
+
+.CalendarEvenimenteTitle h2 {
+    margin: 20px 0;
+    text-align: center;
+    background-color: #017E9E;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 0px 6px 20px -8px #0094B9;
+    height: 2rem;
+   
+}
+
+.CalendarEvenimente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.calendarItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.calendarItemDate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #017E9E;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+
+.calendarItemContent {
+    flex: 1;
+}
+
+.calendarItemContent p {
+    margin: 0;
+}
+.rightSideEvents{
+    width: 70%;
+    margin: auto;
+}
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+    .noutatiContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .middleSide {
+        width: 50%;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .articleCard {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .rightSide {
+        width: 30%;
+        margin: 10px;
+        height: 100%;
+    }
+
+    .leftSide {
+        width: 20%;
+        margin: 10px;
+    }
+}
+
+/* Media queries for mobile screens */
+@media (max-width: 767px) {
+    .leftSide,
+    .middleSide,
+    .rightSide {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .articleCard {
+        width: 100%;
+    }
 }

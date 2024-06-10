@@ -1,29 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, PasswordInput, Tooltip, Center, Text, rem, UnstyledButton, Menu, Group, Checkbox } from '@mantine/core';
 import { IconInfoCircle, IconChevronDown } from '@tabler/icons-react';
 import classes from './Register.module.css';
 import { registerUser } from '../../utils/registerUser';
 import { FormData, InputProps, SelectProps, CheckboxProps } from '../../Interfaces/FormData';
 import { useNavigate } from 'react-router-dom';
-
-const data = [
-  { label: 'Facultatea de Arte și Design' },
-  { label: 'Facultatea de Chimie, Biologie, Geografie' },
-  { label: 'Facultatea de Drept' },
-  { label: 'Facultatea de Economie și de Administrare a Afacerilor' },
-  { label: 'Facultatea de Educație Fizică și Sport' },
-  { label: 'Facultatea de Fizică' },
-  { label: 'Facultatea de Litere, Istorie și Teologie' },
-  { label: 'Facultatea de Matematică și Informatică' },
-  { label: 'Facultatea de Muzică și Teatru' },
-  { label: 'Facultatea de Sociologie și Psihologie' },
-  { label: 'Facultatea de Științe Politice, Filosofie și Științe ale Comunicării' },
-];
+import axios from 'axios';
 
 const DataMentor = [
   { label: 'Da' },
   { label: 'Nu' },
 ];
+
+interface Faculty {
+  id: number;
+  name: string;
+}
 
 function Nume({ value, onChange }: InputProps) {
   return (
@@ -169,16 +161,31 @@ function CompanieActuala({ value, onChange }: InputProps) {
 
 function FacultateaAbsolvita({ value, onChange }: SelectProps) {
   const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(data[0]);
-  const items = data.map((item) => (
+  const [faculties, setFaculties] = useState<Faculty[]>([]);
+  const [selected, setSelected] = useState<Faculty>({ id: 0, name: 'Select faculty' });
+
+  useEffect(() => {
+    const fetchFaculties = async () => {
+      try {
+        const response = await axios.get<Faculty[]>('http://localhost:8090/faculties');
+        setFaculties(response.data);
+      } catch (error) {
+        console.error('Error fetching faculties:', error);
+      }
+    };
+
+    fetchFaculties();
+  }, []);
+
+  const items = faculties.map((item) => (
     <Menu.Item
       onClick={() => {
         setSelected(item);
-        onChange(item.label);
+        onChange(item.name);
       }}
-      key={item.label}
+      key={item.id}
     >
-      {item.label}
+      {item.name}
     </Menu.Item>
   ));
 
@@ -197,7 +204,7 @@ function FacultateaAbsolvita({ value, onChange }: SelectProps) {
         <Menu.Target>
           <UnstyledButton className={classes.control} data-expanded={opened || undefined}>
             <Group gap="xs">
-              <span className={classes.label}>{selected.label}</span>
+              <span className={classes.label}>{selected.name}</span>
             </Group>
             <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
           </UnstyledButton>
@@ -237,12 +244,10 @@ function DevinoMentor({ value, onChange }: CheckboxProps) {
   const [selected, setSelected] = useState(DataMentor[0]);
   const items = DataMentor.map((item) => (
     <Menu.Item
-
       onClick={() => {
         setSelected(item);
         onChange(item.label);
       }}
-
       key={item.label}
     >
       {item.label}
@@ -275,10 +280,8 @@ function DevinoMentor({ value, onChange }: CheckboxProps) {
   );
 }
 
-
-
 function Buttoane({ onSubmit, onLogin }: { onSubmit: () => void; onLogin: () => void }) {
-    const [termsAccepted, setTermsAccepted] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   return (
     <div className={classes.buttoaneContainer}>
@@ -298,7 +301,6 @@ function Buttoane({ onSubmit, onLogin }: { onSubmit: () => void; onLogin: () => 
       </div>
       <div className={classes.buttons}>
         <button className={classes.inregistrareButton} onClick={onSubmit} disabled={!termsAccepted}>Înregistrează-te</button>
-
         <button className={classes.intraInCont} onClick={onLogin}>Intră în cont</button>
       </div>
     </div>
@@ -306,7 +308,7 @@ function Buttoane({ onSubmit, onLogin }: { onSubmit: () => void; onLogin: () => 
 }
 
 export default function Register() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
@@ -353,9 +355,11 @@ export default function Register() {
       alert('Failed to register user');
     }
   };
+
   const handleLogin = () => {
     navigate('/login');
   };
+
   return (
     <div className={classes.container}>
       <div className={classes.title}>

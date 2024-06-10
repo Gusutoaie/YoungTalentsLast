@@ -16,6 +16,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.headerPicture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.headerPictureUpload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.uploadIcon {
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.headerPictureInput {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .header {
@@ -30,7 +66,7 @@
     align-items: center;
     margin-top: 5%;
     position: relative;
-    margin-bottom:5%;
+    margin-bottom: 5%;
 }
 
 .userAvatar {
@@ -70,7 +106,6 @@
     display: flex;
     align-items: center;
     height: 100%;
-  
 }
 
 .link {
@@ -85,7 +120,7 @@
 .userProperties {
     width: 60%;
     margin: auto;
-    margin-top:2%;
+    margin-top: 2%;
 }
 
 .userProperty {
@@ -111,6 +146,7 @@
     position: relative;
     cursor: pointer;
 }
+
 .userIcon {
     font-size: 2rem;
 }
@@ -141,7 +177,13 @@
 .dropdownMenu a:hover {
     background-color: #f0f0f0;
 }
+
 .link .icon {
     font-size: 20px;
 }
 
+.headerPictureImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
