@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Group } from '@mantine/core';
-import { IconCalendar, IconClock, IconBrandFacebook, IconBrandTwitter, IconBrandLinkedin, IconMail, IconPrinter, IconBrandPinterest } from '@tabler/icons-react';
+import {
+    IconCalendar,
+    IconClock,
+    IconBrandFacebook,
+    IconBrandTwitter,
+    IconBrandLinkedin,
+    IconMail,
+    IconPrinter,
+    IconBrandPinterest
+} from '@tabler/icons-react';
 import classes from './EventDetails.module.css';
-import ArticleCard from '../../components/ArticleCard/ArticleCard';
+import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs'; // Adjust the import path as needed
 
 const EventDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -29,10 +37,16 @@ const EventDetails: React.FC = () => {
         fetchArticle();
     }, [id]);
 
+    const breadcrumbItems = [
+        { title: 'Acasa', href: '/' },
+        { title: 'Noutăți și Evenimente', href: '/noutati-evenimente' },
+        { title: article.title.length > 30 ? `${article.title.substring(0, 27)}...` : article.title, href: `/event/${id}` }
+    ];
+
     return (
         <div className={classes.container}>
             <div className={classes.pathFile}>
-                <p>EȘTI AICI: Acasa {'>'} UVT {'>'} {article.title}</p>
+                <BreadCrumbs items={breadcrumbItems} />
             </div>
             <div className={classes.ArticleDetailContainer}>
                 <div className={classes.header}>
@@ -68,7 +82,7 @@ const EventDetails: React.FC = () => {
 
             <div className={classes.suggestedArticle}>
                 <div className={classes.suggestedArticleHeader}>
-                    <div className={classes.articleCard}>
+                    {/* <div className={classes.articleCard}>
                         <ArticleCard />
                     </div>
                     <div className={classes.articleCard}>
@@ -76,7 +90,7 @@ const EventDetails: React.FC = () => {
                     </div>
                     <div className={classes.articleCard}>
                         <ArticleCard />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

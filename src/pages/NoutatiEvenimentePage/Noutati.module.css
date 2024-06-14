@@ -1,15 +1,37 @@
 /* General Styles */
 .container {
-    height: 100%;
+    height: 100vh
+}
+
+.title {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
 }
 
 .title h2 {
-    margin-top: 20px;
-    margin-bottom: 20px;
     color: white;
-    text-align: center;
+    margin: 0;
+    line-height: 54px;
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 700;
+    position: relative;
 }
-
+.title h2::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 90%;
+    background-color: #FFB000; /* Adjust the color as needed */
+}
 .noutatiContainer {
     display: flex;
     flex-direction: column;
@@ -24,8 +46,26 @@
     margin: 10px 0;
 }
 
+.middleSide {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .middleSide {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .middleSide {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .articleCard {
-    margin: 10px 0;
+    margin: 10px;
 }
 
 .CalendarEvenimenteTitle h2 {
@@ -38,7 +78,6 @@
     border-radius: 5px;
     box-shadow: 0px 6px 20px -8px #0094B9;
     height: 2rem;
-   
 }
 
 .CalendarEvenimente {
@@ -54,9 +93,11 @@
     align-items: center;
     background-color: #f8f8f8;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px 0;
     padding: 10px;
+    width: 100%;
+    cursor: pointer; /* Add cursor pointer for better UX */
 }
 
 .calendarItemDate {
@@ -76,15 +117,24 @@
 
 .calendarItemContent {
     flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 80px); /* Adjust max-width to ensure it doesn't exceed container */
 }
 
 .calendarItemContent p {
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.rightSideEvents{
+
+.rightSideEvents {
     width: 70%;
     margin: auto;
 }
+
 /* Media queries for larger screens */
 @media (min-width: 768px) {
     .noutatiContainer {
@@ -95,8 +145,9 @@
     .middleSide {
         width: 50%;
         margin: 10px;
-        display: flex;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
     }
 
     .articleCard {
@@ -125,7 +176,37 @@
         margin: 10px 0;
     }
 
+    .middleSide {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
     .articleCard {
         width: 100%;
     }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #017E9E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    margin: 0 10px;
 }
