@@ -1,10 +1,21 @@
 import React from 'react';
 import classes from './Parteneriate.module.css';
+import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 
 const Parteneriate: React.FC = () => {
+    const breadcrumbItems = [
+        { title: 'Acasa', href: '/' },
+        { title: 'Parteneriate', href: '/parteneriate' }
+    ];
+
     return (
         <div className={classes.container}>
+            <div className={classes.title}>
+                <h2>Parteneriate</h2>
+            </div>
+
             <div className={classes.subContainer}>
+                <BreadCrumbs items={breadcrumbItems} />
 
             
             <p>

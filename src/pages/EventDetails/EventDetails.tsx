@@ -45,10 +45,10 @@ const EventDetails: React.FC = () => {
 
     return (
         <div className={classes.container}>
-            <div className={classes.pathFile}>
-                <BreadCrumbs items={breadcrumbItems} />
-            </div>
+           
             <div className={classes.ArticleDetailContainer}>
+            <BreadCrumbs items={breadcrumbItems} />
+
                 <div className={classes.header}>
                     <div className={classes.title}>
                         <h2>{article.title}</h2>

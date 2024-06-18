@@ -7,6 +7,7 @@ interface User {
     password: string;
     firstName: string;
     lastName: string;
+    actualJob: string;
     birthDate: string;
     phoneNumber: string;
     profilePicturePath: string;

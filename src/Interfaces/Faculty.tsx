@@ -1,5 +1,9 @@
+
+import  User  from './User';
 interface Faculty {
     id: number;
     name: string;
-}
-export default Faculty;
+    description: string;
+    dean: User;
+    proDean: User;
+} export default Faculty;

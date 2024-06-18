@@ -4,17 +4,16 @@
     align-items: center;
     justify-content: center;
     justify-content: space-between; /* Adjust this */
-    height: 870px;
+    height: 100vh;
 }
 
 .bottomInfo{
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     margin-top: 20px;
     width: 70%;
-    margin-bottom: 20px; /* Add some margin if needed */
+    margin-bottom: 4rem; /* Add some margin if needed */
 
 }
 .panel1 {

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "@mantine/carousel": "^7.8.0",
     "@mantine/charts": "^7.8.0",
     "@mantine/code-highlight": "^7.8.0",
@@ -36,9 +37,9 @@
     "quill": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.51.4",
+    "react-hook-form": "^7.51.5",
     "react-quill": "^2.0.0",
-    "react-redux": "^9.1.1",
+    "react-redux": "^9.1.2",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "recharts": "^2.12.5",

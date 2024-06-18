@@ -1,12 +1,14 @@
 .container {
     background-color: white;
     margin-top: 10%;
+    height: 100%;
 }
 
 .subContainer {
     width: 60%;
     margin: auto;
     padding: 5px;
+    height: 100%;
 }
 
 .headerPicture {

@@ -1,6 +1,5 @@
-import React from 'react';
 import { Breadcrumbs, Anchor } from '@mantine/core';
-
+import classes from './BreadCrumbs.module.css';
 interface BreadcrumbItem {
   title: string;
   href: string;
@@ -18,7 +17,7 @@ export default function BreadCrumbs({ items }: BreadCrumbsProps) {
   ));
 
   return (
-    <Breadcrumbs separator="›" separatorMargin="md" mt="xs">
+    <Breadcrumbs className={classes.breadCrumbs} separator="›" separatorMargin="md" mt="xs">
       {breadcrumbItems}
     </Breadcrumbs>
   );

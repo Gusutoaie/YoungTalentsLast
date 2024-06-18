@@ -17,6 +17,8 @@ import Parteneriate from './pages/ParteneriatePage/Parteneriate';
 import ForumPage from './pages/ForumPage/Forum';
 import EventDetails from './pages/EventDetails/EventDetails';
 import AddArticle from './pages/AddArticle/AddArticle';
+import UserChatRoom from './chat/UserChatRoom';
+import FacultyPage from './pages/FacultyPage/FacultyPage';
 function App() {
 
   return (
@@ -34,12 +36,14 @@ function App() {
           <Route path="members" element={<Members />} />
           <Route path="my-account" element={<MyAccount />} />
           <Route path="facultati" element={<Facultati />} />
+          <Route path="faculty/:facultyName" element={<FacultyPage />} /> {/* Add this route */}
           <Route path="parteneriate" element={<Parteneriate />} />
           <Route path="forum" element={<ForumPage />} />
           <Route path="event/:id" element={<EventDetails />} />
           <Route path="addArticle" element={<AddArticle />} />
+          <Route path="chat" element={<UserChatRoom />} />
         </Route>
-
+    
       </Routes>
     </BrowserRouter>
   );

@@ -2,33 +2,40 @@ import { Text, Container, ActionIcon, Group, rem } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './Footer.module.css';
-
+import logooo from './../../assets/images/logoooo.png'
 const data = [
   {
-    title: 'About',
+    title: 'Afla Mai Multe',
     links: [
-      { label: 'Features', link: '#' },
-      { label: 'Pricing', link: '#' },
-      { label: 'Support', link: '#' },
+      { label: 'Despre noi', link: '#' },
+      { label: 'Evenimente', link: '#' },
+      { label: 'Noutati', link: '#' },
       { label: 'Forums', link: '#' },
     ],
   },
   {
-    title: 'Project',
+    title: 'Utile',
     links: [
-      { label: 'Contribute', link: '#' },
-      { label: 'Media assets', link: '#' },
-      { label: 'Changelog', link: '#' },
-      { label: 'Releases', link: '#' },
+      { label: 'Suport', link: '#' },
+      { label: 'Implică-te în comunitate!', link: '#' },
+      { label: 'Vreau sa devin mentor', link: '#' },
+      { label: 'Cariere', link: '#' },
+      { label: 'Parteneriate', link: '#' },
     ],
   },
   {
-    title: 'Community',
+    title: 'Recomandari',
     links: [
-      { label: 'Join Discord', link: '#' },
-      { label: 'Follow on Twitter', link: '#' },
-      { label: 'Email newsletter', link: '#' },
-      { label: 'GitHub discussions', link: '#' },
+      { label: 'UVT', link: '#' },
+      { label: 'Admitere UVT', link: '#' },
+      { label: 'Studenti UVT', link: '#' },
+    ],
+  },
+  {
+    title: 'Contact',
+    links: [
+      { label: '(00) 0256592292', link: '#' },
+      { label: 'alumni@e-uvt.ro', link: '#' },
     ],
   },
 ];
@@ -59,16 +66,14 @@ export default function Footer() {
     <div className={classes.container}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <MantineLogo size={30} />
-          <Text size="xs" c="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
-          </Text>
+          <img src={logooo}></img>
+         
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © 2024 Ovidiu Gusutoaie
         </Text>
 
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">

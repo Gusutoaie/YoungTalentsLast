@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './Facultati.module.css';
 
 interface Faculty {
     name: string;
-    link: string;
     img: string;
 }
 
 const Facultati: React.FC = () => {
-    const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
+    const navigate = useNavigate();
 
     const faculties: Faculty[] = [
-        { name: "ARTE", link: "/arte", img: "src/assets/facultati/Arte-05.png" },
-        { name: "CBG", link: "/cbg", img: "src/assets/facultati/CBG-03.png" },
-        { name: "DREPT", link: "/drept", img: "src/assets/facultati/DREPT-03.png" },
-        { name: "FEAA", link: "/feaa", img: "src/assets/facultati/FEAA-03.png" },
-        { name: "FEFS", link: "/fefs", img: "src/assets/facultati/FEFS-03.png" },
-        { name: "FIZICĂ", link: "/fizica", img: "src/assets/facultati/FIZICA-03.png" },
-        { name: "FMI", link: "/fmi", img: "src/assets/facultati/FMI-12.png" },
-        { name: "FMT", link: "/fmt", img: "src/assets/facultati/FMT-03.png" },
-        { name: "LIT", link: "/lit", img: "src/assets/facultati/LIT-03.png" },
-        { name: "FSP", link: "/fsp", img: "src/assets/facultati/FSP-03.png" },
-        { name: "PFC", link: "/pfc", img: "src/assets/facultati/PFC-03.png" }
+        { name: "Facultatea de Arte și Design", img: "src/assets/facultati/Arte-05.png" },
+        { name: "Facultatea de Chimie, Biologie, Geografie", img: "src/assets/facultati/CBG-03.png" },
+        { name: "Facultatea de Drept", img: "src/assets/facultati/DREPT-03.png" },
+        { name: "Facultatea de Economie și de Administrare a Afacerilor", img: "src/assets/facultati/FEAA-03.png" },
+        { name: "Facultatea de Educație Fizică și Sport", img: "src/assets/facultati/FEFS-03.png" },
+        { name: "Facultatea de Fizică", img: "src/assets/facultati/FIZICA-03.png" },
+        { name: "Facultatea de Litere, Istorie și Teologie", img: "src/assets/facultati/LIT-03.png" },
+        { name: "Facultatea de Matematică și Informatică", img: "src/assets/facultati/FMI-12.png" },
+        { name: "Facultatea de Muzică și Teatru", img: "src/assets/facultati/FMT-03.png" },
+        { name: "Facultatea de Sociologie și Psihologie", img: "src/assets/facultati/FSP-03.png" },
+        { name: "Facultatea de Științe Politice, Filosofie și Științe ale Comunicării", img: "src/assets/facultati/PFC-03.png" }
     ];
 
     const handleFacultyClick = (faculty: Faculty) => {
-        setSelectedFaculty(faculty);
+        navigate(`/faculty/${encodeURIComponent(faculty.name)}`);
     };
 
     return (
@@ -65,17 +65,9 @@ const Facultati: React.FC = () => {
                                 className={classes.facultyImage} 
                                 style={{ backgroundImage: `url(${faculty.img})` }}
                             ></div>
-                            <div className={classes.facultyName}>{faculty.name}</div>
                         </div>
                     ))}
                 </div>
-                {selectedFaculty && (
-                    <div className={classes.selectedFaculty}>
-                        <a href={selectedFaculty.link} className={classes.facultyLink}>
-                            {selectedFaculty.name}
-                        </a>
-                    </div>
-                )}
             </div>
         </div>
     );
