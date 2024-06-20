@@ -1,4 +1,7 @@
 .container{
+    
+}
+.subContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,4 +112,71 @@
 .navbar {
     align-items: center;
     width: 100%;
+}
+.middleView{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: 100vh;
+}
+.middleView{
+    background-image:url('/src/assets/images/uvt_erra-scaled.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    height: 130vh;
+    
+}
+.middleContainer{
+    background-color: white;
+    width: 80%;
+    height: 70%;
+    padding: 1rem;
+}
+.middleTitle{
+    color:white;
+    text-align: center;
+}
+.viewAllButton{
+    color: white;
+    border-color: #fff;
+    background-color: transparent;
+}
+.bottomView{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: 100vh;
+}
+
+.bottomViewButton{
+    border-color: #2a2a2a;
+    background-color: transparent;
+    color: #2a2a2a;
+}
+.bottomViewButton:hover{
+    background-color: #2a2a2a;
+    color: white;
+}
+.bottomTitle{
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+.bottomH3{
+    color: #333;
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 2px;
+}
+.bottomButton{
+    height: 20%;
+}
+.bottomVideo{
+    height: 60%;
 }

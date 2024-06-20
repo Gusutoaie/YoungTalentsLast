@@ -31,7 +31,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ id, title, image, location, d
     return (
         <Card withBorder padding="lg" radius="md" className={classes.card}>
             <Card.Section mb="sm" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
-                <Image
+                <Image className={classes.image}
                     src={imageURL}
                     alt={title}
                     height={180}

@@ -1,4 +1,5 @@
 import Faculty from './Faculty';
+import Role from './Role';
 interface User {
     id: number;
     username: string;
@@ -15,6 +16,7 @@ interface User {
     isConfirmed: boolean;
     createdAt: string;
     yearOfStudy : string;
+    role: Role;
 }
 
 export default User;

@@ -1,0 +1,24 @@
+.card {
+    background-color: var(--mantine-color-body);
+  }
+  
+  .title {
+    font-weight: bold;
+    font-family: Greycliff CF, var(--mantine-font-family);
+    line-height: 1.2;
+  }
+  
+  .body {
+    padding: var(--mantine-spacing-md);
+  }
+  
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5; /* Adjust this value to match your text line height */
+    max-height: calc(1.5em * 2); /* 3 lines * line height */
+  }
+  

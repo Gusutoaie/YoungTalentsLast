@@ -19,8 +19,12 @@ import EventDetails from './pages/EventDetails/EventDetails';
 import AddArticle from './pages/AddArticle/AddArticle';
 import UserChatRoom from './chat/UserChatRoom';
 import FacultyPage from './pages/FacultyPage/FacultyPage';
+import Admin from './Admin/Admin';
+import  User  from './Interfaces/User';
+import { useAppDispatch, useAppSelector } from './hookt';
 function App() {
-
+  const user: User = useAppSelector((state) => state.user); // Fetch user data from Redux store
+  const dispatch = useAppDispatch();
   return (
     <BrowserRouter>
       <Routes>
@@ -42,6 +46,8 @@ function App() {
           <Route path="event/:id" element={<EventDetails />} />
           <Route path="addArticle" element={<AddArticle />} />
           <Route path="chat" element={<UserChatRoom />} />
+          <Route path="admin" element={<Admin />} />
+
         </Route>
     
       </Routes>

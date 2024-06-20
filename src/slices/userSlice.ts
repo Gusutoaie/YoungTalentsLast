@@ -17,7 +17,8 @@ const initialState: User = {
     token: '',
     isConfirmed: false,
     createdAt: '',
-    yearOfStudy: ''
+    yearOfStudy: '',
+    role: { id: 0, name: 'Simple User' }, // Default role
 };
 
 export const userSlice = createSlice({
@@ -39,6 +40,7 @@ export const userSlice = createSlice({
             state.isConfirmed = action.payload.isConfirmed;
             state.createdAt = action.payload.createdAt;
             state.yearOfStudy = action.payload.yearOfStudy;
+            state.role = action.payload.role;
         },
         updateUser: (state, action: PayloadAction<Partial<User>>) => {
             const { payload } = action;
@@ -55,6 +57,7 @@ export const userSlice = createSlice({
             if (payload.isConfirmed !== undefined) state.isConfirmed = payload.isConfirmed;
             if (payload.createdAt !== undefined) state.createdAt = payload.createdAt;
             if (payload.yearOfStudy !== undefined) state.yearOfStudy = payload.yearOfStudy;
+            if (payload.role !== undefined) state.role = payload.role;
         },
         clearUser: (state) => {
             state.id = 0;
@@ -71,6 +74,7 @@ export const userSlice = createSlice({
             state.isConfirmed = false;
             state.createdAt = '';
             state.yearOfStudy = '';
+            state.role = { id: 0, name: 'Simple User' }; // Reset to default role
         },
     },
 });

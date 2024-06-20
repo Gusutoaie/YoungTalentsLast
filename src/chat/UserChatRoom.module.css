@@ -63,6 +63,9 @@
 
 .avatar {
   border-radius: 50%;
+  width: 50px;  /* Fixed width */
+  height: 50px; /* Fixed height */
+  object-fit: cover; /* Ensure the image covers the area */
 }
 
 .about {

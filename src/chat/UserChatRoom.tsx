@@ -15,6 +15,7 @@ const UserChatRoom: React.FC = () => {
     const [newMessage, setNewMessage] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const baseURL = 'http://localhost:8090/'; // Replace with your backend base URL
 
     useEffect(() => {
         const fetchChatRoom = async () => {
@@ -81,7 +82,7 @@ const UserChatRoom: React.FC = () => {
                     <ul className={classes.list}>
                         {chatRoom?.members.map((member) => (
                             <li key={member.id} className={classes.listItem}>
-                                <img src={member.profilePicturePath || 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg'} alt="avatar" className={classes.avatar} />
+                                <img src={`${baseURL}${member.profilePicturePath}` || 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg'} alt="avatar" className={classes.avatar} />
                                 <div className={classes.about}>
                                     <div className={classes.name}>{member.firstName} {member.lastName}</div>
                                     <div className={classes.status}>

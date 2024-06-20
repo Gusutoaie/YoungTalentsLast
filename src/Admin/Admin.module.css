@@ -1,0 +1,24 @@
+.container{
+    height: 100vh;
+    
+}
+
+.subContainer{
+    display: flex;
+    flex-direction: row;
+    margin-top:5rem;
+    background-color: white;
+    height: 100%;
+}
+.navBar{
+    width: auto;    
+  
+
+}
+.content{
+    width: 60%;
+    margin:auto;
+    box-shadow: 5px 5px 5px 5px #d7d7d7;
+    padding: 2rem;
+    height: 100%;
+}

@@ -6,9 +6,10 @@ import axios from 'axios';
 import { updateUser } from '../../slices/userSlice'; // Import the updateUser action
 import { IconUser, IconPencil, IconMessageCircle2Filled } from '@tabler/icons-react';
 import UVTAlumni from '../../assets/images/UVTAlumni.png';
+import User from '../../Interfaces/User'; // Import the User interface
 
 const MyAccount: React.FC = () => {
-    const user = useAppSelector((state) => state.user); // Fetch user data from Redux store
+    const user: User = useAppSelector((state) => state.user); // Fetch user data from Redux store
     const dispatch = useAppDispatch();
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [avatar, setAvatar] = useState(user.profilePicturePath);
@@ -24,6 +25,7 @@ const MyAccount: React.FC = () => {
         faculty: user.faculty?.name || '', // Adjust based on your logic
         yearOfStudy: user.yearOfStudy,
         password: '',
+
     });
 
     const toggleDropdown = () => {
@@ -90,7 +92,7 @@ const MyAccount: React.FC = () => {
             console.error('Error:', error);
         }
     };
-
+    console.log(user);
     return (
         <div className={classes.container}>
             <div className={classes.subContainer}>
@@ -147,6 +149,12 @@ const MyAccount: React.FC = () => {
                                 <IconMessageCircle2Filled className={classes.icon} />
                                 Comments
                             </a>
+                            {user.role?.name === 'UVT Admin' && (
+                                <a href="/admin" className={classes.link}>
+                                    <IconSettings className={classes.icon} />
+                                    Admin Panel
+                                </a>
+                            )}
                         </nav>
                     </div>
 

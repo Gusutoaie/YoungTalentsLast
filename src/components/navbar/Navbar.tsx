@@ -79,7 +79,7 @@ export default function Navbar() {
     );
   });
 
-  // Conditionally add "Contul meu" link if user exists
+  // Conditionally add "Contul meu" and "Admin Panel" links if user exists and has the role "UVT Admin"
   if (user) {
     items.push(
       <a
@@ -90,6 +90,18 @@ export default function Navbar() {
         Contul meu
       </a>
     );
+    console.log
+    if (user.role === 'UVT Admin') {
+      items.push(
+        <a
+          key="admin-panel"
+          href="/admin"
+          className={classes.link}
+        >
+          Admin Panel
+        </a>
+      );
+    }
   }
 
   return (
