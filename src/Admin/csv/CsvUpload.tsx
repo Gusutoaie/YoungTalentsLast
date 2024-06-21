@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
 import axios from 'axios';
-
+import classes from './CsvUpload.module.css';
 const CsvUpload: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
     const [emails, setEmails] = useState<string[]>([]);
@@ -38,8 +38,8 @@ const CsvUpload: React.FC = () => {
     return (
         <div>
             <input type="file" accept=".csv" onChange={handleFileChange} />
-            <button onClick={handleFileParse}>Parse CSV</button>
-            <button onClick={handleSubmit}>Submit</button>
+            <button className={classes.btn} onClick={handleFileParse}>Parse CSV</button>
+            <button className={classes.btn} onClick={handleSubmit}>Submit</button>
             {emails.length > 0 && (
                 <div>
                     <h3>Emails to be submitted:</h3>

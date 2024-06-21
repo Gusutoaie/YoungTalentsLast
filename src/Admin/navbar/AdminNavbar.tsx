@@ -1,41 +1,46 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Group, Code } from '@mantine/core';
 import {
   IconBellRinging,
-  IconFingerprint,
-  IconKey,
+  IconUsersGroup,
+  IconTimelineEvent,
+  IconBrandHipchat,
+  IconBriefcase2,
   IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
   IconSwitchHorizontal,
   IconLogout,
+  IconChartInfographic,
 } from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './AdminNavbar.module.css';
+import logooooo from '../../assets/images/logoooo.png';
 
 const data = [
-  { link: '', label: 'Notifications', icon: IconBellRinging },
-  { link: '', label: 'Billing', icon: IconReceipt2 },
-  { link: '', label: 'Security', icon: IconFingerprint },
-  { link: '', label: 'SSH Keys', icon: IconKey },
-  { link: '', label: 'Databases', icon: IconDatabaseImport },
-  { link: '', label: 'Authentication', icon: Icon2fa },
-  { link: '', label: 'Other Settings', icon: IconSettings },
+  {link: 'stats', label: 'Stats', icon: IconChartInfographic},
+  { link: 'notifications', label: 'Notifications', icon: IconBellRinging },
+  { link: 'members', label: 'Members', icon: IconUsersGroup },
+  { link: 'events', label: 'Events & Articles', icon: IconTimelineEvent },
+  { link: 'chats', label: 'Chats', icon: IconBrandHipchat },
+  { link: 'jobs', label: 'Jobs', icon: IconBriefcase2 },
+  { link: 'otherSettings', label: 'Other Settings', icon: IconSettings },
 ];
 
-export function NavbarSimple() {
-  const [active, setActive] = useState('Billing');
+interface NavbarSimpleProps {
+  onLinkClick?: (link: string) => void;
+}
+
+export function NavbarSimple({ onLinkClick = () => {} }: NavbarSimpleProps) {
+  const [active, setActive] = useState('billing');
 
   const links = data.map((item) => (
     <a
       className={classes.link}
       data-active={item.label === active || undefined}
-      href={item.link}
+      href="#"
       key={item.label}
       onClick={(event) => {
         event.preventDefault();
         setActive(item.label);
+        onLinkClick(item.link); // Notify parent component
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
@@ -47,8 +52,10 @@ export function NavbarSimple() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-          <MantineLogo size={28} />
-          <Code fw={700}>v3.1.2</Code>
+          <div className={classes.logoContainer}>
+            <img src={logooooo} alt="logo" className={classes.logo} />
+          </div>
+          <Code fw={700}>v0.0.1</Code>
         </Group>
         {links}
       </div>
