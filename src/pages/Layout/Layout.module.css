@@ -3,9 +3,8 @@
     width: 100%;
     background-image: url("D:\YoungTalents\YoungTalentsLast\src\assets\images\uvt-background.png");
     background-size: cover;
-    background-position: center;
+    background-position: right bottom 10%; /* Adjust this value to move the picture higher */
 }
-
 .mainContainer {
     display: flex;
     flex-direction: column;

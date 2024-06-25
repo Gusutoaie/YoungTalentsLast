@@ -180,3 +180,156 @@
 .bottomVideo{
     height: 60%;
 }
+
+
+
+
+/* ------------------------- */
+/* Mobile styles */
+@media (max-width: 767px) {
+    .subContainer {
+        height: auto;
+        padding: 20px;
+    }
+
+    .middleInfo h1 {
+        font-size: 3rem;
+    }
+
+    .middleInfo p {
+        font-size: 1.2rem;
+    }
+
+    .infoButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .loginButton, .joinCommunityButton {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .loginButton{
+        margin-right:0px;
+    }
+
+    .bottomInfo {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .panel1, .panel2, .panel3 {
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .panelImage {
+        margin-bottom: 10px;
+    }
+
+    .panelTitle {
+        font-size: 1.2rem;
+    }
+
+    .middleView {
+        height: auto;
+        padding: 20px;
+    }
+
+    .middleContainer {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .viewAllButton {
+        width: 100%;
+    }
+
+    .bottomView {
+        height: auto;
+        padding: 20px;
+    }
+
+    .bottomVideo iframe {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .subContainer {
+        height: auto;
+        padding: 20px;
+    }
+    .loginButton{
+        margin-right:0px;
+    }
+    .middleInfo h1 {
+        font-size: 4rem;
+    }
+
+    .middleInfo p {
+        font-size: 1.5rem;
+    }
+
+    .infoButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .loginButton, .joinCommunityButton {
+        width: 80%;
+        margin-bottom: 1rem;
+    }
+
+    .bottomInfo {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .panel1, .panel2, .panel3 {
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .panelImage {
+        margin-bottom: 10px;
+    }
+
+    .panelTitle {
+        font-size: 1.3rem;
+    }
+
+    .middleView {
+        height: auto;
+        padding: 20px;
+    }
+
+    .middleContainer {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .viewAllButton {
+        width: 80%;
+    }
+
+    .bottomView {
+        height: auto;
+        padding: 20px;
+    }
+
+    .bottomVideo iframe {
+        width: 100%;
+        height: auto;
+    }
+}

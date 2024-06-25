@@ -9,13 +9,28 @@
 
 .container {
     background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100vh;
+    margin-top:5rem;
+
+}
+.subContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
     margin: auto;
-    width: 65%;
     padding: 20px;
-    border-radius: 8px;
 }
 
+
+
+.addForm{
+    width: 70%;
+    margin: auto;
+    height: 70%;
+
+}
 .pathFile {
     font-size: 14px;
     color: #555;

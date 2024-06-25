@@ -1,5 +1,7 @@
 import './App.css'
 import '@mantine/core/styles.css';
+import '@mantine/tiptap/styles.css';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout/Layout';
 import Register from './pages/RegisterPage/Register';
@@ -14,7 +16,7 @@ import Members from './pages/MembersPage/Members';
 import MyAccount from './pages/AccountPage/MyAccount';
 import Facultati from './pages/FacultatiPage/Facultati';
 import Parteneriate from './pages/ParteneriatePage/Parteneriate';
-import ForumPage from './pages/ForumPage/Forum';
+import ForumPage from './forum/ForumPage';
 import EventDetails from './pages/EventDetails/EventDetails';
 import AddArticle from './pages/AddArticle/AddArticle';
 import UserChatRoom from './chat/UserChatRoom';
@@ -22,6 +24,8 @@ import FacultyPage from './pages/FacultyPage/FacultyPage';
 import Admin from './Admin/Admin';
 import  User  from './Interfaces/User';
 import { useAppDispatch, useAppSelector } from './hookt';
+import PostsPage from './forum/Posts/PostsPage';
+import PostDetailed from './forum/PostDetailed/PostDetailed';
 function App() {
   const user: User = useAppSelector((state) => state.user); // Fetch user data from Redux store
   const dispatch = useAppDispatch();
@@ -40,16 +44,16 @@ function App() {
           <Route path="members" element={<Members />} />
           <Route path="my-account" element={<MyAccount />} />
           <Route path="facultati" element={<Facultati />} />
-          <Route path="faculty/:facultyName" element={<FacultyPage />} /> {/* Add this route */}
+          <Route path="faculty/:facultyName" element={<FacultyPage />} />
           <Route path="parteneriate" element={<Parteneriate />} />
-          <Route path="forum" element={<ForumPage />} />
           <Route path="event/:id" element={<EventDetails />} />
           <Route path="addArticle" element={<AddArticle />} />
           <Route path="chat" element={<UserChatRoom />} />
           <Route path="admin" element={<Admin />} />
-
+          <Route path="forum" element={<ForumPage />} />
+            <Route path="forum/posts" element={<PostsPage />} />
+            <Route path="forum/posts/:id" element={<PostDetailed />} />
         </Route>
-    
       </Routes>
     </BrowserRouter>
   );

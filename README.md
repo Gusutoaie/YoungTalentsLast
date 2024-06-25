@@ -7,3 +7,4 @@ npm install axios
 npm install react-hook-form
 npm install papaparse
 npm install --save-dev @types/papaparse
+npm install @mantine/tiptap @mantine/core @mantine/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit

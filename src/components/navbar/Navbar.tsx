@@ -30,7 +30,7 @@ const links = [
     links: [
       { link: '/faq', label: 'Interviu de cariera' },
       { link: '/jobs', label: 'Oportunități de job' },
-      { link: '/forums', label: 'Forums' },
+      { link: '/forum', label: 'Forums' },
     ],
   },
   { 
