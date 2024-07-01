@@ -90,7 +90,7 @@ const PostsPage: React.FC = () => {
             </div>
 
             <footer>
-                <span>&copy; Selmi Abderrahim | All Rights Reserved</span>
+                <span>&copy; </span>
             </footer>
         </div>
     );

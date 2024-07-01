@@ -153,7 +153,7 @@ const PostDetailed: React.FC = () => {
                 </div>
             </div>
             <footer>
-                <span>&copy; Selmi Abderrahim | All Rights Reserved</span>
+                <span>&copy; </span>
             </footer>
         </div>
     );
