@@ -1,0 +1,46 @@
+.buttoaneContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+ }
+ .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+ }
+ .buttons button {
+    width: 45%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none; /* Removed default button border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for buttons */
+    font-size: 16px; /* Consistent font size */
+ }
+ .inregistrareButton {
+    background-color: #007cba;
+    color: white;
+    &:hover {
+        background-color: #005f8a; /* Darker shade on hover */
+    }
+ }
+ .intraInCont {
+    background-color: lightgray;
+    color: black;
+    &:hover {
+        background-color: #bdbdbd; /* Darker shade on hover */
+    }
+ }
+ .termeniSiConditi {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+ }
+ .AratăTermeni {
+    margin-right: 10px; /* Spacing between link and checkbox */
+ }
+ .checkbox {
+    margin-top: 10px;
+ }

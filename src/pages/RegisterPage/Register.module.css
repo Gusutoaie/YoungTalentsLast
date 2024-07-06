@@ -1,20 +1,22 @@
 .container {
-  height: 100%;
-  background-color: #f8f9fa; /* Added background color for the entire container */
-  padding: 20px; /* Added padding to the container */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top:5%;
-}
-.title {
+   height: 100%;
+   background-color: #f8f9fa; /* Added background color for the entire container */
+   padding: 20px; /* Added padding to the container */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 5%;
+ }
+ 
+ .title {
    color: #333;
    font-size: 2rem;
    margin-bottom: 20px; /* Adjusted margin for consistent spacing */
    text-align: center; /* Centered the title */
-}
-.forms {
+ }
+ 
+ .forms {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -23,84 +25,22 @@
    padding: 20px; /* Added padding to the form section */
    border-radius: 8px; /* Rounded corners */
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-.formsContainer {
+ }
+ 
+ .formsContainer {
    width: 100%;
    max-width: 600px; /* Maximum width for better responsiveness */
    padding: 20px;
-}
-.control {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 10px 16px;
-   border-radius: 4px;
-   border: 1px solid #ced4da;
-   transition: background-color 150ms ease;
-   background-color: #fff; /* White background for consistency */
-   margin-bottom: 16px; /* Added margin for spacing */
-   &:hover {
-     background-color: #f1f3f5; /* Hover effect */
-   }
-   &[data-expanded] {
-     background-color: #e9ecef; /* Expanded state background */
-   }
-}
-.label {
-   font-weight: 500;
-   font-size: 14px;
-}
-.icon {
-   transition: transform 150ms ease;
-   transform: rotate(0deg);
-   &[data-expanded] {
-     transform: rotate(180deg);
-   }
-}
-.buttoaneContainer {
-   display: flex;
-   flex-direction: column;
-   background-color: white;
-}
-.buttons {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-between;
-   width: 100%;
-}
-.buttons button {
-   width: 45%;
-   padding: 10px;
-   margin: 10px 0;
-   border: none; /* Removed default button border */
-   border-radius: 4px; /* Rounded corners */
-   cursor: pointer; /* Pointer cursor for buttons */
-   font-size: 16px; /* Consistent font size */
-}
-.inregistrareButton {
-   background-color: #007cba;
-   color: white;
-   &:hover {
-       background-color: #005f8a; /* Darker shade on hover */
-   }
-}
-.intraInCont {
-   background-color: lightgray;
-   color: black;
-   &:hover {
-       background-color: #bdbdbd; /* Darker shade on hover */
-   }
-}
-.termeniSiConditi {
-   display: flex;
-   flex-direction: column;
-   margin: 10px 0;
-}
-.AratăTermeni {
-   margin-right: 10px; /* Spacing between link and checkbox */
-}
-.checkbox {
-   margin-top: 10px;
-}
+ }
+ 
+ .termsLink {
+   color: #007bff;
+   cursor: pointer;
+   text-align: center;
+   margin-bottom: 20px;
+ }
+ 
+ .termsLink:hover {
+   text-decoration: underline;
+ }
+ 

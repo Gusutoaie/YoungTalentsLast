@@ -7,7 +7,7 @@ const Members: React.FC = () => {
   const [members, setMembers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const baseURL = 'http://localhost:8090/'; // Replace with your backend base URL
+  const baseURL = 'http://localhost:8090'; // Replace with your backend base URL
 
   useEffect(() => {
     const fetchMembers = async () => {

@@ -10,9 +10,12 @@ import User from '../../Interfaces/User'; // Import the User interface
 
 const MyAccount: React.FC = () => {
     const user: User = useAppSelector((state) => state.user); // Fetch user data from Redux store
+    const backendIp = 'http://localhost:8090'; // Adjust based on your backend IP
+
     const dispatch = useAppDispatch();
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [avatar, setAvatar] = useState(user.profilePicturePath);
+    console.log('Avatar:', avatar);
     const [headerImage, setHeaderImage] = useState(UVTAlumni);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
@@ -23,58 +26,71 @@ const MyAccount: React.FC = () => {
         birthDate: user.birthDate,
         phoneNumber: user.phoneNumber,
         faculty: user.faculty?.name || '', // Adjust based on your logic
+        facultyDescription: user.faculty?.description || '',
+        facultyDean: user.faculty?.dean?.username || '',
+        facultyProDean: user.faculty?.proDean?.username || '',
         yearOfStudy: user.yearOfStudy,
         password: '',
-
     });
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
 
-    const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
-            setAvatar(URL.createObjectURL(file));
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('userId', user.id.toString()); // Add userId to the form data
+
+            try {
+                const response = await axios.post('http://localhost:8090/user/upload-profile-picture', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+                if (response.status === 200) {
+                    const imageUrl = response.data.imageUrl; // Adjust based on your backend response
+                    setAvatar(imageUrl);
+                    await updateUserProfile({ profilePicturePath: imageUrl });
+                }
+            } catch (error) {
+                console.error('Error uploading avatar:', error);
+            }
         }
     };
 
-    const handleHeaderImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleHeaderImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
-            setHeaderImage(URL.createObjectURL(file));
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('userId', user.id.toString()); // Add userId to the form data
+
+            // try {
+            //     const response = await axios.post('http://localhost:8090/user/upload-header-image', formData, {
+            //         headers: {
+            //             'Content-Type': 'multipart/form-data',
+            //         },
+            //     });
+            //     if (response.status === 200) {
+            //         const imageUrl = response.data.imageUrl; // Adjust based on your backend response
+            //         setHeaderImage(imageUrl);
+            //         await updateUserProfile({ headerImagePath: imageUrl });
+            //     }
+            // } catch (error) {
+            //     console.error('Error uploading header image:', error);
+            // }
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const updateUserProfile = async (updateData: Partial<User>) => {
         const updatedUser = {
-            id: user.id,
-            username: formData.username,
-            email: formData.email,
-            password: formData.password,
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            birthDate: formData.birthDate,
-            phoneNumber: formData.phoneNumber,
-            profilePicturePath: avatar,
-            token: user.token,
-            isConfirmed: user.isConfirmed,
-            createdAt: user.createdAt,
-            yearOfStudy: formData.yearOfStudy,
-            facultyDto: {
-                id: user.faculty?.id || 1, // Ensure the ID is correctly set
-                name: formData.faculty,
-            },
+            ...user,
+            ...updateData,
         };
-    
+
         try {
             const response = await axios.put('http://localhost:8090/user/update', updatedUser, {
                 headers: {
@@ -92,7 +108,35 @@ const MyAccount: React.FC = () => {
             console.error('Error:', error);
         }
     };
-    console.log(user);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        await updateUserProfile({
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            birthDate: formData.birthDate,
+            phoneNumber: formData.phoneNumber,
+            yearOfStudy: formData.yearOfStudy,
+            faculty: {
+                ...user.faculty,
+                name: formData.faculty,
+                description: formData.facultyDescription,
+                dean: { ...user.faculty?.dean, username: formData.facultyDean },
+                proDean: { ...user.faculty?.proDean, username: formData.facultyProDean },
+            },
+        });
+    };
+
     return (
         <div className={classes.container}>
             <div className={classes.subContainer}>
@@ -111,7 +155,9 @@ const MyAccount: React.FC = () => {
                     </span>
                     <div className={classes.UserHeader}>
                         <div className={classes.userAvatar}>
-                            <img src={avatar} alt="" />
+
+
+                            <img src={backendIp+avatar} alt="" />
                             <input
                                 type="file"
                                 accept="image/*"
@@ -213,6 +259,30 @@ const MyAccount: React.FC = () => {
                                 className={classes.userPropertyValue}
                                 name="faculty"
                                 value={formData.faculty}
+                                onChange={handleChange}
+                                readOnly={!isEditing}
+                            />
+                            <label className={classes.userPropertyTitle}>Faculty Description:</label>
+                            <input
+                                className={classes.userPropertyValue}
+                                name="facultyDescription"
+                                value={formData.facultyDescription}
+                                onChange={handleChange}
+                                readOnly={!isEditing}
+                            />
+                            <label className={classes.userPropertyTitle}>Dean:</label>
+                            <input
+                                className={classes.userPropertyValue}
+                                name="facultyDean"
+                                value={formData.facultyDean}
+                                onChange={handleChange}
+                                readOnly={!isEditing}
+                            />
+                            <label className={classes.userPropertyTitle}>Pro-Dean:</label>
+                            <input
+                                className={classes.userPropertyValue}
+                                name="facultyProDean"
+                                value={formData.facultyProDean}
                                 onChange={handleChange}
                                 readOnly={!isEditing}
                             />

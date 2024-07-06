@@ -1,0 +1,30 @@
+.inputContainer {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    width: 100%;
+  }
+  
+  .labelIconGroup {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+    font-size: 22px;
+    font-style: italic;
+  }
+  
+  .labelText {
+    color: #555;
+    font-size: 22px;
+    font-style: italic;
+  }
+  
+  .icon {
+    color: #555;
+    font-size: 22px;
+    font-style: italic;
+  }
+  

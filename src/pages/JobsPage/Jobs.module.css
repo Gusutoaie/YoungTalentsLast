@@ -9,13 +9,14 @@
 }
 
 .jobsContainer {
-  height: 1200px;
+  display: flex;
+  flex-direction: column;
+  min-height: 120vh;
 }
 
 .jobs {
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: 100%;
   margin: auto;
 }
 
@@ -70,7 +71,7 @@
 }
 
 .rightSide {
-  width: 60%;
+  width: 70%;
 }
 
 .filter {
@@ -159,9 +160,26 @@
 .jobsContainer {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
-/* Mobile Styles */
+.pagination {
+  margin: 2rem auto;
+}
+
+.filterButton {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+
+  /* display: none; */
+}
+
 @media (max-width: 768px) {
   .container {
     width: 100%;
@@ -184,5 +202,18 @@
   .filterBody {
     width: 90%;
     margin: 10px auto;
+  }
+
+  .filterButton {
+    display: block;
+    margin: 10px auto;
+  }
+
+  .filter {
+    display: none;
+  }
+
+  .filter.show {
+    display: block;
   }
 }

@@ -1,0 +1,83 @@
+:root {
+    --wp-admin-theme-color: #007cba;
+    --wp-admin-theme-color-darker-10: #006ba1;
+    --wp-admin-theme-color-darker-20: #005a87;
+}
+
+
+
+.container {
+    margin-top: 10rem;
+  
+}
+.subContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+}
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.line {
+    display: block;
+    width: 50px;
+    height: 3px;
+    margin: 10px auto;
+    background-color: #dd9933;
+}
+
+.content {
+    text-align: justify;
+    line-height: 1.6;
+    max-width: 800px;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    width: 100%;
+    background-repeat: no-repeat !important;
+    background-position: 140% 100%;
+}
+
+.image {
+    float: right;
+    margin: 0 0 10px 20px;
+    border-radius: 10px;
+}
+
+.parallax {
+    background-image: url('./../../assets/images/2-scaled.jpg');
+    height: 460px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.vcSeparator {
+    width: 100%;
+    border-top: 2px solid #003c4f;
+    margin: 20px 0;
+}
+.headingTitle{
+    max-width: 800px;
+    width: 100%;
+}

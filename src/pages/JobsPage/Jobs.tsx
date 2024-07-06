@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import JobCard from '../../components/JobCard/JobCard';
 import classes from './Jobs.module.css';
 import Job from '../../Interfaces/Job';
-import { TextInput, TextInputProps, ActionIcon, useMantineTheme, rem } from '@mantine/core';
+import { TextInput, TextInputProps, ActionIcon, useMantineTheme, rem, Pagination, Button } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import SearchBarCard from '../../components/searchBar/searchBar';
 
@@ -22,9 +22,12 @@ const JobsPage: React.FC = (props: TextInputProps) => {
   ]);
   const [cityFilter, setCityFilter] = useState('');
   const [showCitySuggestions, setShowCitySuggestions] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const cityInputRef = useRef<HTMLDivElement>(null);
-
   const theme = useMantineTheme();
+
+  const [activePage, setActivePage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -103,6 +106,8 @@ const JobsPage: React.FC = (props: TextInputProps) => {
     };
   }, []);
 
+  const paginatedJobs = filteredJobs.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage);
+
   return (
     <div className={classes.container}>
       <div className={classes.topHeader}>
@@ -114,7 +119,10 @@ const JobsPage: React.FC = (props: TextInputProps) => {
       </div>
       <div className={classes.mainBody}>
         <div className={classes.leftSide}>
-          <div className={classes.filter}>
+          <Button className={classes.filterButton} onClick={() => setShowFilters(!showFilters)}>
+            Filter
+          </Button>
+          <div className={`${classes.filter} ${showFilters ? classes.show : classes.hide}`}>
             <div className={classes.filterBody}>
               <h3>Orașe</h3>
               <div className={classes.cityInput} ref={cityInputRef}>
@@ -217,7 +225,7 @@ const JobsPage: React.FC = (props: TextInputProps) => {
         <div className={classes.rightSide}>
           {error && <div className={classes.error}>{error}</div>}
           <div className={classes.jobsContainer}>
-            {filteredJobs.map((job) => (
+            {paginatedJobs.map((job) => (
               <JobCard
                 key={job.id}
                 image={job.logoUrl}
@@ -230,6 +238,12 @@ const JobsPage: React.FC = (props: TextInputProps) => {
               />
             ))}
           </div>
+          <Pagination 
+            value={activePage} 
+            onChange={setActivePage} 
+            total={Math.ceil(filteredJobs.length / itemsPerPage)} 
+            className={classes.pagination} 
+          />
         </div>
       </div>
     </div>

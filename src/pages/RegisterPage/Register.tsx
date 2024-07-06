@@ -1,314 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { TextInput, PasswordInput, Tooltip, Center, Text, rem, UnstyledButton, Menu, Group, Checkbox } from '@mantine/core';
-import { IconInfoCircle, IconChevronDown } from '@tabler/icons-react';
-import classes from './Register.module.css';
-import { registerUser } from '../../utils/registerUser';
-import { FormData, InputProps, SelectProps, CheckboxProps } from '../../Interfaces/FormData';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-const DataMentor = [
-  { label: 'Da' },
-  { label: 'Nu' },
-];
-
-interface Faculty {
-  id: number;
-  name: string;
-}
-
-function Nume({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Nume"
-      placeholder="Nume"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function Prenume({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Prenume"
-      placeholder="Prenume"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function Username({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Username"
-      placeholder="Acesta va fi numele dumneavoastră de profil"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function Parola({ value, onChange }: InputProps) {
-  const [opened, setOpened] = useState(false);
-  const valid = value.trim().length >= 6;
-  return (
-    <Tooltip
-      label={valid ? 'All good!' : 'Password must include at least 6 characters'}
-      position="bottom-start"
-      withArrow
-      opened={opened}
-      color={valid ? 'teal' : undefined}
-      withinPortal
-    >
-      <PasswordInput
-        label="Parolă"
-        required
-        placeholder="Parolă"
-        onFocus={() => setOpened(true)}
-        onBlur={() => setOpened(false)}
-        mt="md"
-        value={value}
-        onChange={onChange}
-        className={classes.input}
-      />
-    </Tooltip>
-  );
-}
-
-function ConfirmareParola({ value, onChange }: InputProps) {
-  const [opened, setOpened] = useState(false);
-  const valid = value.trim().length >= 6;
-  return (
-    <Tooltip
-      label={valid ? 'All good!' : 'Password must include at least 6 characters'}
-      position="bottom-start"
-      withArrow
-      opened={opened}
-      color={valid ? 'teal' : undefined}
-      withinPortal
-    >
-      <PasswordInput
-        label="Confirm Parolă"
-        required
-        placeholder="Confirm Parolă"
-        onFocus={() => setOpened(true)}
-        onBlur={() => setOpened(false)}
-        mt="md"
-        value={value}
-        onChange={onChange}
-        className={classes.input}
-      />
-    </Tooltip>
-  );
-}
-
-function Email({ value, onChange }: InputProps) {
-  const rightSection = (
-    <Tooltip
-      label="We store your data securely"
-      position="top-end"
-      withArrow
-      transitionProps={{ transition: 'pop-bottom-right' }}
-    >
-      <Text component="div" c="dimmed" style={{ cursor: 'help' }}>
-        <Center>
-          <IconInfoCircle style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-        </Center>
-      </Text>
-    </Tooltip>
-  );
-
-  return (
-    <TextInput
-      rightSection={rightSection}
-      label="Adresă de e-mail"
-      placeholder="Adresă de e-mail"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function JobActual({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Job Actual"
-      placeholder="Job Actual"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function CompanieActuala({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Companie Actuală"
-      placeholder="Companie Actuală"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function FacultateaAbsolvita({ value, onChange }: SelectProps) {
-  const [opened, setOpened] = useState(false);
-  const [faculties, setFaculties] = useState<Faculty[]>([]);
-  const [selected, setSelected] = useState<Faculty>({ id: 0, name: 'Select faculty' });
-
-  useEffect(() => {
-    const fetchFaculties = async () => {
-      try {
-        const response = await axios.get<Faculty[]>('http://localhost:8090/faculties');
-        setFaculties(response.data);
-      } catch (error) {
-        console.error('Error fetching faculties:', error);
-      }
-    };
-
-    fetchFaculties();
-  }, []);
-
-  const items = faculties.map((item) => (
-    <Menu.Item
-      onClick={() => {
-        setSelected(item);
-        onChange(item.name);
-      }}
-      key={item.id}
-    >
-      {item.name}
-    </Menu.Item>
-  ));
-
-  return (
-    <div>
-      <Text size="sm" mb={4}>
-        Facultatea absolvită
-      </Text>
-      <Menu
-        onOpen={() => setOpened(true)}
-        onClose={() => setOpened(false)}
-        radius="md"
-        width="target"
-        withinPortal
-      >
-        <Menu.Target>
-          <UnstyledButton className={classes.control} data-expanded={opened || undefined}>
-            <Group gap="xs">
-              <span className={classes.label}>{selected.name}</span>
-            </Group>
-            <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
-          </UnstyledButton>
-        </Menu.Target>
-        <Menu.Dropdown>{items}</Menu.Dropdown>
-      </Menu>
-    </div>
-  );
-}
-
-function AnulAbsolvirii({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Anul Absolvirii"
-      placeholder="Anul Absolvirii"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function DomeniuProfesional({ value, onChange }: InputProps) {
-  return (
-    <TextInput
-      label="Domeniu profesional actual"
-      placeholder="Domeniu Profesional"
-      className={classes.input}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
-
-function DevinoMentor({ value, onChange }: CheckboxProps) {
-  const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(DataMentor[0]);
-  const items = DataMentor.map((item) => (
-    <Menu.Item
-      onClick={() => {
-        setSelected(item);
-        onChange(item.label);
-      }}
-      key={item.label}
-    >
-      {item.label}
-    </Menu.Item>
-  ));
-
-  return (
-    <div>
-      <Text size="sm" mb={4}>
-        Vrei să devii mentor al comunităţii noastre?
-      </Text>
-      <Menu
-        onOpen={() => setOpened(true)}
-        onClose={() => setOpened(false)}
-        radius="md"
-        width="target"
-        withinPortal
-      >
-        <Menu.Target>
-          <UnstyledButton className={classes.control} data-expanded={opened || undefined}>
-            <Group gap="xs">
-              <span className={classes.label}>{selected.label}</span>
-            </Group>
-            <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
-          </UnstyledButton>
-        </Menu.Target>
-        <Menu.Dropdown>{items}</Menu.Dropdown>
-      </Menu>
-    </div>
-  );
-}
-
-function Buttoane({ onSubmit, onLogin }: { onSubmit: () => void; onLogin: () => void }) {
-  const [termsAccepted, setTermsAccepted] = useState(false);
-
-  return (
-    <div className={classes.buttoaneContainer}>
-      <div className={classes.termeniSiConditi}>
-        <a className={classes.AratăTermeni} href="#">Arată termenii şi condiţiile</a>
-        <Checkbox
-          className={classes.checkbox}
-          checked={termsAccepted}
-          onChange={(event) => setTermsAccepted(event.currentTarget.checked)}
-          label="Sunt de acord cu termenii şi condiţiile"
-          tabIndex={-1}
-          size="md"
-          mr="xl"
-          styles={{ input: { cursor: 'pointer' } }}
-          aria-hidden
-        />
-      </div>
-      <div className={classes.buttons}>
-        <button className={classes.inregistrareButton} onClick={onSubmit} disabled={!termsAccepted}>Înregistrează-te</button>
-        <button className={classes.intraInCont} onClick={onLogin}>Intră în cont</button>
-      </div>
-    </div>
-  );
-}
+import { registerUser } from '../../utils/registerUser';
+import { FormData } from '../../Interfaces/FormData';
+import classes from './Register.module.css';
+import Nume from '../../components/RegisterComponents/Nume';
+import Prenume from '../../components/RegisterComponents/Prenume';
+import Username from '../../components/RegisterComponents/Username';
+import Parola from '../../components/RegisterComponents/Parola';
+import Email from '../../components/RegisterComponents/Email';
+import JobActual from '../../components/RegisterComponents/JobActual';
+import CompanieActuala from '../../components/RegisterComponents/CompanieActuala';
+import FacultateaAbsolvita from '../../components/RegisterComponents/FacultateaAbsolvita';
+import AnulAbsolvirii from '../../components/RegisterComponents/AnulAbsolvirii';
+import DomeniuProfesional from '../../components/RegisterComponents/DomeniuProfesional';
+import DevinoMentor from '../../components/RegisterComponents/DevinoMentor';
+import Buttoane from '../../components/RegisterComponents/Buttoane';
+import TermsAndConditions from '../../components/RegisterComponents/TermsAndContitions';
 
 export default function Register() {
   const navigate = useNavigate();
+  const [showTerms, setShowTerms] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
@@ -361,7 +72,7 @@ export default function Register() {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{ height: showTerms ? 'auto' : '100%' }}>
       <div className={classes.title}>
         <h2>Register Page</h2>
       </div>
@@ -379,6 +90,10 @@ export default function Register() {
           <AnulAbsolvirii value={formData.yearOfStudy} onChange={handleChange('yearOfStudy')} />
           <DomeniuProfesional value={formData.professionalDomain} onChange={handleChange('professionalDomain')} />
           <DevinoMentor value={formData.mentor} onChange={handleCheckboxChange('mentor')} />
+          <div className={classes.termsLink} onClick={() => setShowTerms(!showTerms)}>
+            {showTerms ? 'Ascunde' : 'Arată termenii şi condiţiile'}
+          </div>
+          {showTerms && <TermsAndConditions />}
           <Buttoane onSubmit={handleSubmit} onLogin={handleLogin} />
         </div>
       </div>

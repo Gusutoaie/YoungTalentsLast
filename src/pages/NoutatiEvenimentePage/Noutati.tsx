@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import classes from './Noutati.module.css';
 import ArticleCard from '../../components/ArticleCard/ArticleCard';
 import Article from '../../Interfaces/Article';
+import { Pagination } from '@mantine/core';
 
 interface Event {
     id: number;
@@ -13,7 +14,7 @@ interface Event {
 const Noutati: React.FC = () => {
     const [articles, setArticles] = useState<Article[]>([]);
     const [events, setEvents] = useState<Event[]>([]);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -22,7 +23,7 @@ const Noutati: React.FC = () => {
 
     const fetchArticles = (page: number) => {
         setLoading(true);
-        fetch(`http://localhost:8090/articles/paged?page=${page}&size=3`)
+        fetch(`http://localhost:8090/articles/paged?page=${page - 1}&size=12`) // Adjust the size to 12
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -63,18 +64,6 @@ const Noutati: React.FC = () => {
         fetchArticles(page);
         fetchEvents();
     }, [page]);
-
-    const handleNextPage = () => {
-        if (page < totalPages - 1) {
-            setPage(page + 1);
-        }
-    };
-
-    const handlePreviousPage = () => {
-        if (page > 0) {
-            setPage(page - 1);
-        }
-    };
 
     const handleEventClick = (id: number) => {
         navigate(`/event/${id}`);
@@ -138,15 +127,12 @@ const Noutati: React.FC = () => {
                 </div>
             </div>
             <div className={classes.pagination}>
-                <button onClick={handlePreviousPage} disabled={page === 0}>
-                    Previous
-                </button>
-                <span>
-                    Page {page + 1} of {totalPages}
-                </span>
-                <button onClick={handleNextPage} disabled={page === totalPages - 1}>
-                    Next
-                </button>
+                <Pagination 
+                    value={page} 
+                    onChange={setPage} 
+                    total={totalPages} 
+                    className={classes.pagination} 
+                />
             </div>
         </div>
     );

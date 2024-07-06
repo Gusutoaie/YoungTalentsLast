@@ -1,35 +1,82 @@
+/* General Styles */
 .header {
-    height: rem(56px);
-  }
-  
-  .inner {
-    height: rem(56px);
+  height: rem(56px);
+}
+
+.header404 {
+  color: black; /* Change to the color you want for the 404 page */
+}
+
+.inner {
+  height: rem(56px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: rem(8px) rem(12px);
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  color: white;
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+}
+
+.link404 {
+  color: black; /* Change text color for 404 page */
+}
+
+.linkLabel {
+  margin-right: rem(5px);
+}
+
+.uvtLogo {
+  margin-top: 20px;
+}
+
+.link:hover {
+  background-color: transparent;
+}
+
+.link404:hover {
+  background-color: gray; /* Change background color on hover for 404 page */
+}
+
+.desktopMenu {
+  display: none;
+}
+
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: rem(56px);
+  left: 0;
+  right: 0;
+  padding: rem(16px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobileMenu .link {
+  color: black; /* Change text color for mobile menu */
+}
+
+@media (min-width: 768px) {
+  .desktopMenu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
-  
-  .link {
-    display: block;
-    line-height: 1;
-    padding: rem(8px) rem(12px);
-    border-radius: var(--mantine-radius-sm);
-    text-decoration: none;
-    color: white;
-    font-size: var(--mantine-font-size-sm);
-    font-weight: 500;
-  
-    @mixin hover {
-      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-    }
+
+  .mobileMenu {
+    display: none;
   }
-  
-  .linkLabel {
-    margin-right: rem(5px);
+}
+
+@media (max-width: 767px) {
+  .mobileMenu {
+    display: flex;
   }
-  .uvtLogo {
-    margin-top:20px;
-  }
-  .link:hover {
-    background-color: transparent;
-  }
+}
