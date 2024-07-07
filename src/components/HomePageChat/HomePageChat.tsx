@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { getChatRoomForUser, joinChatRoom, sendMessage, getMessages } from '../../services/ChatRoomService';
 import { useAppSelector } from '../../hookt';
 import { selectUser } from '../../slices/userSlice';
-import  ChatRoom  from '../../Interfaces/ChatRoom';
-import  Message  from '../../Interfaces/Message';
+import ChatRoom from '../../Interfaces/ChatRoom';
+import Message from '../../Interfaces/Message';
 import classes from './HomePageChat.module.css';
 import chatIcon from '../../assets/images/chatIcon.svg';
-
 
 const HomePageChat: React.FC = () => {
     const [chatOpen, setChatOpen] = useState(false);
@@ -80,9 +79,9 @@ const HomePageChat: React.FC = () => {
                         <ul className={classes.ulMessage}>
                             {messages.map((message) => (
                                 <li key={message.id} className={`${classes.clearfix} ${message.user.id === userId ? classes.alignRight : classes.alignLeft}`}>
-                                    <div className={`${classes.messageData} ${message.user.id === userId ? classes.alignRight : classes.alignLeft}`}>
-                                        <span className={classes.messageDataTime}>{new Date(message.timestamp).toLocaleTimeString()}</span> &nbsp; &nbsp;
-                                        <span className={classes.messageDataName}>{message.user.username}</span> <i className={`fa fa-circle ${message.user.id === userId ? classes.me : classes.online}`}></i>
+                                    <div className={classes.messageData}>
+                                        <span className={classes.messageDataName}>{message.user.username}</span>
+                                        <span className={classes.messageDataTime}>{new Date(message.timestamp).toLocaleTimeString()}</span>
                                     </div>
                                     <div className={`${classes.message} ${message.user.id === userId ? classes.myMessage : classes.otherMessage}`}>
                                         {message.content}
@@ -101,7 +100,6 @@ const HomePageChat: React.FC = () => {
                             onChange={(e) => setNewMessage(e.target.value)}
                             className={classes.textarea}
                         ></textarea>
-
                         <button className={classes.sendButton} onClick={handleSendMessage}>Send</button>
                     </div>
                 </div>

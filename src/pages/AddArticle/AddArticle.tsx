@@ -81,7 +81,8 @@ const AddArticle: React.FC = () => {
         <div className={classes.container}>
 
             <div className={classes.subContainer}>
-            <BreadCrumbs items={breadcrumbItems} />
+                <div className={classes.content}>  
+            <BreadCrumbs  items={breadcrumbItems}/>
 
             
             <form className={classes.addForm} onSubmit={form.onSubmit(handleSubmit)}>
@@ -178,6 +179,7 @@ const AddArticle: React.FC = () => {
                     </Group>
                 </div>
                 </form>
+            </div>
             </div>
         </div>
     );

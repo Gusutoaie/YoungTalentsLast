@@ -10,15 +10,12 @@
 .mainBox{
     font-size: 14px;
     font-family: 'Titillium Web', sans-serif;
-    color:#FEFEFE;
-    height: 150vh;
     background-color: lightgray;
 }
 .mainContent{
     background-color: white;
     width: 80%;
     margin:auto;
-    margin-top: 5rem;
 }
 .paragraph{
     color:#505050;
@@ -158,6 +155,8 @@
 .navbar{
     display:flex;
     align-items: center;
+    background-color: #017E9E;
+    justify-content: center;
 }
 .navigation{
     background-color:#52057b;
@@ -272,7 +271,7 @@
 footer{
     margin-top: 20px;
     padding: 20px;
-    background-color:  #52057b;
+    background-color:  #017E9E;  
     display: block;
     text-align: center;
 }

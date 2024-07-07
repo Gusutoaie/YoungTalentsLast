@@ -1,24 +1,53 @@
 .card {
-    background-color: var(--mantine-color-body);
+  background-color: var(--mantine-color-body);
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  font-family: Greycliff CF, var(--mantine-font-family);
+  line-height: 1.2;
+}
+
+.body {
+  padding: var(--mantine-spacing-md);
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5; /* Adjust this value to match your text line height */
+  max-height: calc(1.5em * 3); /* 3 lines * line height */
+}
+
+.ArticleImage {
+  width: 100%;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
   }
-  
-  .title {
-    font-weight: bold;
-    font-family: Greycliff CF, var(--mantine-font-family);
-    line-height: 1.2;
+
+  .group {
+    flex-direction: column;
+    align-items: center; /* Center align items for better presentation on mobile */
   }
-  
-  .body {
-    padding: var(--mantine-spacing-md);
+
+  .ArticleImage {
+    width: 300px; /* Set width */
+    height: 150px; /* Set height to be the same as width */
+
   }
-  
+
   .description {
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.5; /* Adjust this value to match your text line height */
-    max-height: calc(1.5em * 2); /* 3 lines * line height */
+    display: none;
   }
-  
+}

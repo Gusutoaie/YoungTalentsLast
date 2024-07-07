@@ -4,13 +4,18 @@ import classes from './Noutati.module.css';
 import ArticleCard from '../../components/ArticleCard/ArticleCard';
 import Article from '../../Interfaces/Article';
 import { Pagination } from '@mantine/core';
+import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 
 interface Event {
     id: number;
     date: string;
     title: string;
 }
-
+const breadcrumbItems = [
+    { title: 'Acasa', href: '/' },
+    { title: 'Noutăți și Evenimente', href: '/noutati-evenimente' },
+    { title: 'Adauga Noutăți și Evenimente', href: '/addArticle' }
+];
 const Noutati: React.FC = () => {
     const [articles, setArticles] = useState<Article[]>([]);
     const [events, setEvents] = useState<Event[]>([]);
@@ -20,6 +25,9 @@ const Noutati: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const navigate = useNavigate();
+
+
+    
 
     const fetchArticles = (page: number) => {
         setLoading(true);
@@ -69,6 +77,7 @@ const Noutati: React.FC = () => {
         navigate(`/event/${id}`);
     };
 
+   
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         const day = String(date.getDate()).padStart(2, '0');
@@ -86,10 +95,13 @@ const Noutati: React.FC = () => {
 
     return (
         <div className={classes.container}>
+                        
+
             <div className={classes.title}>
                 <h2>NOUTĂȚI & EVENIMENTE</h2>
             </div>
             <div className={classes.noutatiContainer}>
+                
                 <div className={classes.leftSide}>
                     {/* Left side content can go here */}
                 </div>

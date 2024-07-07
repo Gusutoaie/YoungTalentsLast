@@ -39,7 +39,7 @@
     display: flex;
     justify-content: flex-end;
     padding: 10px;
-    background: #f5f5f5;
+    background: #228be6;
     border-bottom: 1px solid #ddd;
 }
 
@@ -71,10 +71,16 @@
 
 .alignRight {
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .alignLeft {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .messageData {
@@ -86,6 +92,7 @@
 .messageDataTime {
     font-size: 12px;
     color: #999;
+    margin-left: 10px;
 }
 
 .messageDataName {
@@ -105,24 +112,15 @@
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    max-width: 80%;
 }
 
 .otherMessage {
     background-color: #f1f0f0;
-    float: left;
 }
 
 .myMessage {
     background-color: #e1ffc7;
-    float: right;
-}
-
-.floatRight {
-    float: right;
-}
-
-.floatLeft {
-    float: left;
 }
 
 .chatMessage {

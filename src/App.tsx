@@ -70,13 +70,14 @@ function App() {
               <Admin />
             </PrivateRoute>
           } />
-          <Route path="forum" element={<ForumPage />} />
-          <Route path="forum/posts" element={<PostsPage />} />
-          <Route path="forum/posts/:id" element={<PostDetailed />} />
+         
           <Route path="logout" element={<LogoutPage />} />
         </Route>
         <Route path="404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
+        <Route path="forum" element={<ForumPage />} />
+        <Route path="forum/posts" element={<PostsPage />} />
+        <Route path="forum/posts/:id" element={<PostDetailed />} />
       </Routes>
     </BrowserRouter>
   );

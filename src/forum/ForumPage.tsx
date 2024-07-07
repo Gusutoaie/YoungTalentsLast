@@ -3,6 +3,7 @@ import classes from './ForumPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faCar, faSearch, faFrown, faBook, faRocket, faLock, faShareSquare, faChartBar, faFire } from '@fortawesome/free-solid-svg-icons';
 import InputWithButton from './components/search';
+import Navbar from '../components/navbar/Navbar';
 
 const ForumPage: React.FC = () => {
     const [navVisible, setNavVisible] = useState(false);
@@ -16,22 +17,9 @@ const ForumPage: React.FC = () => {
 
                 <header>
                     {/* NavBar Section */}
-                    {/* <div className={classes.navbar}>
-                        <nav className={`${classes.navigation} ${navVisible ? '' : classes.hide}`} id="navigation">
-                            <span className={classes['close-icon']} id="close-icon" onClick={showIconBar}>
-                                <FontAwesomeIcon icon={faTimes} />
-                            </span>
-                            <ul className={classes['nav-list']}>
-                                <li className={classes['nav-item']}><a href="forums.html">Forums</a></li>
-                                <li className={classes['nav-item']}><a href="posts.html">Posts</a></li>
-                                <li className={classes['nav-item']}><a href="detail.html">Detail</a></li>
-                            </ul>
-                        </nav>
-                        <a className={classes['bar-icon']} id="iconBar" onClick={hideIconBar}>
-                            <FontAwesomeIcon icon={faBars} />
-                        </a>
-                        <div className={classes.brand}>My Forum</div>
-                    </div> */}
+                    <div className={classes.navbar}>
+                            <Navbar />
+                    </div>
                     {/* SearchBox Section */}
                     <div className={classes['search-box']}>
                         <InputWithButton />
