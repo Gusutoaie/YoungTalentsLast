@@ -1,7 +1,8 @@
-.container{
-    
+.container {
+    position: relative;
 }
-.subContainer{
+
+.subContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +11,7 @@
     height: 100vh;
 }
 
-.bottomInfo{
+.bottomInfo {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -33,7 +34,7 @@
     background: rgba(0, 0, 0, 0.8);
 }
 
-.middleInfo{
+.middleInfo {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
@@ -48,7 +49,7 @@
     margin-bottom: 5px;
 }
 
-.middleInfo h1{
+.middleInfo h1 {
     color: white;
     font-size: 5rem;
     text-transform: bold;
@@ -56,7 +57,7 @@
     margin-bottom: 5px;
 }
 
-.infoMessage{
+.infoMessage {
     color: white;
 }
 
@@ -174,7 +175,7 @@
 }
 
 .bottomButton {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .bottomVideo {
@@ -186,10 +187,11 @@
     width: 100%;
     height: auto;
 }
-.bottomInfoMobile{
-    display: none;
 
+.bottomInfoMobile {
+    display: none;
 }
+
 /* Mobile styles */
 @media (max-width: 767px) {
     .subContainer {
@@ -199,7 +201,6 @@
         align-items: center;
         justify-content: center;
     }
-   
 
     .middleInfo h1 {
         font-size: 3rem;
@@ -239,32 +240,35 @@
         margin-bottom: 1rem;
         margin-top: 1rem;
     }
-    .bottomViewButton{
+
+    .bottomViewButton {
         margin-bottom: 1rem;
         width: 20rem;
     }
 
     .bottomView {
         height: auto;
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
     }
 
     .bottomVideo iframe {
         width: 100%;
         height: auto;
     }
-    .bottomVideo{
+
+    .bottomVideo {
         width: 100%;
     }
+
     .bottomInfo {
         flex-direction: column;
         width: 100%;
         display: none;
     }
-    .bottomInfoMobile{
+
+    .bottomInfoMobile {
         display: flex;
         flex-direction: column;
-        
     }
 
     .panel1, .panel2, .panel3 {
@@ -282,7 +286,6 @@
     .panelTitle {
         font-size: 1.2rem;
     }
-    
 }
 
 /* Tablet styles */
@@ -487,4 +490,58 @@
 }
 .animatedText span:nth-child(35) {
     animation-delay: 3.5s;
+}
+
+/* Chat Styles */
+.chatButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chatButton img {
+    width: 50px;
+    height: 50px;
+}
+
+.chatContainer {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+}
+
+.chatHeader h4 {
+    margin: 0;
+}
+
+.chatHeader button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.chatBody {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
 }

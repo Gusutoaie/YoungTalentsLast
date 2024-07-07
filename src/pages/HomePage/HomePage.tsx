@@ -8,6 +8,7 @@ import graduate from '../../assets/images/graduate.png';
 import bookImg from '../../assets/images/bookImg.png';
 import graduate2 from '../../assets/images/graduate2.png';
 import mesajAniversar from '../../assets/video/Mesaj-aniversare-UVT-80-alumni.mp4';
+import HomePageChat from '../../components/HomePageChat/HomePageChat';
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -151,6 +152,8 @@ const HomePage = () => {
                     </video>
                 </div>
             </div>
+
+            <HomePageChat />
         </div>
     );
 };
