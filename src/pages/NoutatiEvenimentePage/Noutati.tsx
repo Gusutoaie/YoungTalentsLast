@@ -5,6 +5,7 @@ import ArticleCard from '../../components/ArticleCard/ArticleCard';
 import Article from '../../Interfaces/Article';
 import { Pagination } from '@mantine/core';
 import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
+import NewsCarousel from '../../components/ArticleNewsCarousel/NewsCarousel';
 
 interface Event {
     id: number;
@@ -100,13 +101,20 @@ const Noutati: React.FC = () => {
             <div className={classes.title}>
                 <h2>NOUTĂȚI & EVENIMENTE</h2>
             </div>
+            <div className={classes.NewsCarousel}>
+
+                <NewsCarousel />
+
+             
+            </div>
             <div className={classes.noutatiContainer}>
-                
+
                 <div className={classes.leftSide}>
                     {/* Left side content can go here */}
                 </div>
 
                 <div className={classes.middleSide}>
+                    
                     {articles.map(article => (
                         <div className={classes.articleCard} key={article.id}>
                             <ArticleCard {...article} />
@@ -127,7 +135,7 @@ const Noutati: React.FC = () => {
                                     onClick={() => handleEventClick(event.id)}
                                 >
                                     <div className={classes.calendarItemDate}>
-                                        <p>{formatDate(event.date)}</p>
+                                        <p>{event.date}</p>
                                     </div>
                                     <div className={classes.calendarItemContent}>
                                         <p>{event.title}</p>

@@ -13,6 +13,7 @@ import HomePageChat from '../../components/HomePageChat/HomePageChat';
 const HomePage = () => {
     const navigate = useNavigate();
     const [articles, setArticles] = useState<Article[]>([]);
+    const [displayArticles, setDisplayArticles] = useState<Article[]>([]);
 
     useEffect(() => {
         const getArticles = async () => {
@@ -25,6 +26,28 @@ const HomePage = () => {
         };
         getArticles();
     }, []);
+
+    useEffect(() => {
+        const updateDisplayedArticles = () => {
+            let numberOfArticles;
+            const screenWidth = window.innerWidth;
+            
+            if (screenWidth < 768) {
+                numberOfArticles = 3;
+            } else if (screenWidth < 1024) {
+                numberOfArticles = 4;
+            } else {
+                numberOfArticles = 4; // For larger screens, adjust as needed
+            }
+
+            setDisplayArticles(articles.slice(0, numberOfArticles));
+        };
+
+        updateDisplayedArticles();
+        window.addEventListener('resize', updateDisplayedArticles);
+
+        return () => window.removeEventListener('resize', updateDisplayedArticles);
+    }, [articles]);
 
     const handleLoginClick = () => {
         navigate('/login');
@@ -129,7 +152,7 @@ const HomePage = () => {
                     <h3 className={classes.middleTitle}>Vezi ultimele noutăți și evenimente din comunitatea UVT</h3> 
                 </div>
                 <div className={classes.middleContainer}>
-                    {articles.map(article => (
+                    {displayArticles.map(article => (
                         <ArticleCardHomePage key={article.id} article={article} />
                     ))}
                 </div>

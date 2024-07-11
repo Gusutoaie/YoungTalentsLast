@@ -1,4 +1,4 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, Image, Avatar, Text, Group } from '@mantine/core';
 import Article from '../../Interfaces/Article';
 import classes from './ArticleCardHomePage.module.css';
@@ -10,8 +10,14 @@ interface ArticleCardHomePageProps {
 }
 
 export function ArticleCardHomePage({ article }: ArticleCardHomePageProps) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/event/${article.id}`);
+  };
+
   return (
-    <Card withBorder radius="md" p={0} className={classes.card}>
+    <Card withBorder radius="md" p={0} className={classes.card} onClick={handleCardClick}>
       <Group wrap="nowrap" gap={0} className={classes.group}>
         <Image
           className={classes.ArticleImage}

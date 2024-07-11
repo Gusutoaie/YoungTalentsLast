@@ -3,6 +3,7 @@
   width: 90%;
   margin: auto;
   margin-bottom: 1rem;
+  cursor: pointer; /* Add this line */
 }
 
 .title {

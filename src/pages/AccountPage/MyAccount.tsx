@@ -11,11 +11,9 @@ import User from '../../Interfaces/User'; // Import the User interface
 const MyAccount: React.FC = () => {
     const user: User = useAppSelector((state) => state.user); // Fetch user data from Redux store
     const backendIp = 'http://localhost:8090'; // Adjust based on your backend IP
-
     const dispatch = useAppDispatch();
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [avatar, setAvatar] = useState(user.profilePicturePath);
-    console.log('Avatar:', avatar);
     const [headerImage, setHeaderImage] = useState(UVTAlumni);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
